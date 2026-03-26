@@ -11,3 +11,17 @@
 ## 第三步：开始尝试
 - 不需要完美
 - 快速 PoC / Agent / Demo
+---
+
+## ✅ 你可以继续做什么？
+
+现在你已经了解了如何第一次参与创新，接下来你可以：
+
+- 👉 CREATE_PROJECT.html  
+  创建你的第一个创新项目 Repository
+
+- 👉 TEMPLATE_GUIDE.html  
+  了解如何使用项目模板快速启动一个想法
+
+- 👉 FAQ.html  
+  查看新手在这个阶段最常见的问题
