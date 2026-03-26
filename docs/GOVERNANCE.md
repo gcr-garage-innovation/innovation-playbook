@@ -104,7 +104,7 @@ Graduation 指的是：
 - 进入正式团队或产品线
 - 接受标准治理流程
 
-（详见：LIFECYCLE.html）
+（详见：[项目生命周期](LIFECYCLE.html)）
 
 ---
 
