@@ -1,5 +1,7 @@
 ---
 title: 项目生命周期
+layout: page
+nav_id: lifecycle
 ---
 
 # 🔄 项目生命周期（Lifecycle）
@@ -101,16 +103,3 @@ title: 项目生命周期
 - 🔀 转向 — 发现新方向，重新开始
 
 > 停滞 ≠ 失败。每一次尝试都是学习。
-
----
-
-## ✅ 你可以继续做什么？
-
-- 👉 [创建项目](CREATE_PROJECT.html)
-  对照生命周期，检查你的项目当前阶段
-
-- 👉 [治理与规则](GOVERNANCE.html)
-  了解项目在不同阶段的治理要求
-
-- 👉 [首页](index.html)
-  返回 Innovation Playbook 首页

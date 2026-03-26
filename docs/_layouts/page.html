@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} — Innovation Playbook</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+  <style>
+    :root {
+      --c-bg: #f0f2f5; --c-surface: #fff; --c-border: #e4e7ec;
+      --c-text: #1a1a2e; --c-sub: #5f6b7a;
+      --c-primary: #0078d4; --c-primary-dark: #005a9e; --c-primary-light: #e8f4fd;
+      --c-success: #0e7a0d; --c-success-bg: #dff6dd;
+      --c-warning: #c4820e; --c-warning-bg: #fff4ce;
+      --c-danger: #c42b1c; --c-danger-bg: #fde7e9;
+      --radius: 8px; --radius-lg: 14px;
+      --shadow: 0 2px 8px rgba(0,0,0,.06);
+      --shadow-hover: 0 8px 24px rgba(0,120,212,.15);
+      --header-h: 56px;
+      --ease: cubic-bezier(.4,0,.2,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: "Segoe UI", "Noto Sans SC", -apple-system, sans-serif;
+      background: var(--c-bg); color: var(--c-text); line-height: 1.7;
+    }
+    a { color: var(--c-primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code {
+      background: #eef1f6; padding: 2px 8px; border-radius: 4px;
+      font-size: .88em; font-family: "Cascadia Code", Consolas, monospace;
+    }
+
+    /* ── Header ── */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--header-h); display: flex; align-items: center;
+      justify-content: space-between; padding: 0 24px;
+      background: var(--c-primary-dark); color: #fff;
+    }
+    .header-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: .95rem; }
+    .header-brand a { color: #fff; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+    .header-nav { display: flex; gap: 4px; flex-wrap: wrap; }
+    .header-nav a {
+      color: rgba(255,255,255,.75); font-size: .82rem; padding: 5px 12px;
+      border-radius: 6px; transition: background .15s;
+    }
+    .header-nav a:hover { background: rgba(255,255,255,.12); color: #fff; text-decoration: none; }
+    .header-nav a.active { background: rgba(255,255,255,.18); color: #fff; }
+
+    /* ── Mobile menu ── */
+    .mobile-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer; padding: 4px 8px; }
+
+    /* ── Layout ── */
+    .page { max-width: 780px; margin: 0 auto; padding: calc(var(--header-h) + 36px) 24px 60px; }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb { font-size: .82rem; color: var(--c-sub); margin-bottom: 24px; }
+    .breadcrumb a { color: var(--c-primary); }
+
+    /* ── Content Styling ── */
+    .content h1 {
+      font-size: 1.8rem; font-weight: 800; margin-bottom: 10px;
+      padding-bottom: 12px; border-bottom: 2px solid var(--c-border);
+    }
+    .content h2 {
+      font-size: 1.25rem; font-weight: 700; margin-top: 32px; margin-bottom: 14px;
+      padding-bottom: 8px; border-bottom: 1px solid var(--c-border);
+      color: var(--c-primary-dark);
+    }
+    .content h3 { font-size: 1.05rem; font-weight: 700; margin-top: 20px; margin-bottom: 8px; }
+    .content p { font-size: .92rem; line-height: 1.8; margin-bottom: 12px; }
+    .content ul, .content ol { margin: 8px 0 16px 20px; }
+    .content li { font-size: .92rem; line-height: 1.8; margin-bottom: 5px; }
+    .content blockquote {
+      background: var(--c-primary-light); border-left: 4px solid var(--c-primary);
+      padding: 14px 18px; border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 14px 0; font-size: .9rem; color: var(--c-text);
+    }
+    .content blockquote p { margin-bottom: 4px; }
+    .content hr {
+      border: none; border-top: 1px solid var(--c-border);
+      margin: 28px 0;
+    }
+    .content strong { color: var(--c-text); }
+    .content img { max-width: 100%; border-radius: var(--radius); margin: 12px 0; }
+
+    /* ── Bottom Navigation ── */
+    .bottom-nav {
+      margin-top: 40px; padding-top: 24px; border-top: 2px solid var(--c-border);
+    }
+    .bottom-nav-title { font-size: .88rem; color: var(--c-sub); margin-bottom: 14px; font-weight: 600; }
+    .nav-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+    }
+    .nav-card {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 16px; border-radius: var(--radius);
+      border: 1px solid var(--c-border); background: var(--c-surface);
+      transition: border-color .2s, box-shadow .2s; font-size: .88rem; font-weight: 600;
+    }
+    .nav-card:hover { border-color: var(--c-primary); box-shadow: var(--shadow-hover); text-decoration: none; }
+    .nav-card.home { background: var(--c-primary-light); border-color: var(--c-primary); }
+    .nav-card .nav-icon { font-size: 1.1rem; flex-shrink: 0; }
+    .nav-card .nav-label { color: var(--c-text); }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center; padding: 20px 24px; font-size: .78rem; color: var(--c-sub);
+      margin-top: 20px;
+    }
+    .footer a { color: var(--c-primary); }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .header-nav { display: none; position: absolute; top: var(--header-h); left: 0; right: 0; background: var(--c-primary-dark); flex-direction: column; padding: 8px 16px; gap: 2px; }
+      .header-nav.open { display: flex; }
+      .mobile-toggle { display: block; }
+      .nav-grid { grid-template-columns: 1fr; }
+      .page { padding: calc(var(--header-h) + 20px) 16px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-brand">
+    <a href="index.html">🚀 <span>Innovation Playbook</span></a>
+  </div>
+  <button class="mobile-toggle" onclick="document.querySelector('.header-nav').classList.toggle('open')">☰</button>
+  <nav class="header-nav">
+    <a href="GET_STARTED.html" {% if page.nav_id == 'get-started' %}class="active"{% endif %}>🎯 新手入门</a>
+    <a href="CREATE_PROJECT.html" {% if page.nav_id == 'create-project' %}class="active"{% endif %}>🛠️ 创建项目</a>
+    <a href="TEMPLATE_GUIDE.html" {% if page.nav_id == 'template-guide' %}class="active"{% endif %}>📋 模板指南</a>
+    <a href="LIFECYCLE.html" {% if page.nav_id == 'lifecycle' %}class="active"{% endif %}>🔄 生命周期</a>
+    <a href="FAQ.html" {% if page.nav_id == 'faq' %}class="active"{% endif %}>❓ FAQ</a>
+    <a href="GOVERNANCE.html" {% if page.nav_id == 'governance' %}class="active"{% endif %}>📜 治理</a>
+  </nav>
+</header>
+
+<div class="page">
+
+  <div class="breadcrumb">
+    <a href="index.html">🏠 首页</a> / <strong>{{ page.title }}</strong>
+  </div>
+
+  <div class="content">
+    {{ content }}
+  </div>
+
+  <!-- Unified Bottom Navigation -->
+  <div class="bottom-nav">
+    <div class="bottom-nav-title">📚 浏览其他页面</div>
+    <div class="nav-grid">
+      <a class="nav-card home" href="index.html">
+        <span class="nav-icon">🏠</span><span class="nav-label">返回首页</span>
+      </a>
+      {% unless page.nav_id == 'get-started' %}
+      <a class="nav-card" href="GET_STARTED.html">
+        <span class="nav-icon">🎯</span><span class="nav-label">新手入门</span>
+      </a>
+      {% endunless %}
+      {% unless page.nav_id == 'create-project' %}
+      <a class="nav-card" href="CREATE_PROJECT.html">
+        <span class="nav-icon">🛠️</span><span class="nav-label">创建项目</span>
+      </a>
+      {% endunless %}
+      {% unless page.nav_id == 'template-guide' %}
+      <a class="nav-card" href="TEMPLATE_GUIDE.html">
+        <span class="nav-icon">📋</span><span class="nav-label">模板指南</span>
+      </a>
+      {% endunless %}
+      {% unless page.nav_id == 'lifecycle' %}
+      <a class="nav-card" href="LIFECYCLE.html">
+        <span class="nav-icon">🔄</span><span class="nav-label">项目生命周期</span>
+      </a>
+      {% endunless %}
+      {% unless page.nav_id == 'faq' %}
+      <a class="nav-card" href="FAQ.html">
+        <span class="nav-icon">❓</span><span class="nav-label">常见问题</span>
+      </a>
+      {% endunless %}
+      {% unless page.nav_id == 'governance' %}
+      <a class="nav-card" href="GOVERNANCE.html">
+        <span class="nav-icon">📜</span><span class="nav-label">治理与规则</span>
+      </a>
+      {% endunless %}
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>GCR Garage Innovation · <a href="https://github.com/gcr-garage-innovation" target="_blank">GitHub Organization</a> · <a href="index.html">Innovation Playbook</a></p>
+</div>
+
+</body>
+</html>

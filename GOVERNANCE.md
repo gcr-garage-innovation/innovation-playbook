@@ -1,5 +1,7 @@
 ---
-title: 治理与责任Governance
+title: 治理与责任 Governance
+layout: page
+nav_id: governance
 ---
 
 
@@ -160,17 +162,3 @@ Innovation Playbook 的治理原则是：
 - 交流
 - 透明
 - 记录
----
-
-## ✅ 你可以继续做什么？
-
-如果你已经了解了治理和责任边界，接下来可以：
-
-- 👉 [项目生命周期](LIFECYCLE.html)  
-  查看项目在不同阶段应如何被支持和升级
-
-- 👉 [创建项目](CREATE_PROJECT.html)  
-  对照治理原则，检查当前项目状态
-
-- 👉 [返回首页](index.html)  
-  返回 Innovation Playbook 首页
