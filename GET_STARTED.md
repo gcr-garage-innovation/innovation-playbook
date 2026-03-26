@@ -1,3 +1,7 @@
+---
+title: 快速开始创新项目
+---
+
 # 快速开始创新项目
 
 > 🎯 适合谁：第一次接触创新项目的员工
@@ -21,11 +25,11 @@
 
 现在你已经了解了如何第一次参与创新，接下来你可以：
 
-- 👉 CREATE_PROJECT.html  
+- 👉 [创建项目](CREATE_PROJECT.html)  
   创建你的第一个创新项目 Repository
 
-- 👉 TEMPLATE_GUIDE.html  
+- 👉 [模板指南](TEMPLATE_GUIDE.html)  
   了解如何使用项目模板快速启动一个想法
 
-- 👉 FAQ.html  
+- 👉 [常见问题](FAQ.html)  
   查看新手在这个阶段最常见的问题

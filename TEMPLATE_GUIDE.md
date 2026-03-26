@@ -1,3 +1,7 @@
+---
+title: 如何使用创新项目模板Template Guide
+---
+
 # 如何使用创新项目模板（Template Guide）
 
 > 🎯 适合谁：不确定项目结构、第一次使用模板的人
@@ -126,7 +130,7 @@
 
 如果项目逐渐成熟，可以进入 **毕业（Graduation）流程**。
 
-👉 参见：LIFECYCLE.html
+👉 参见：[项目生命周期](LIFECYCLE.html)
 
 ---
 
@@ -145,11 +149,11 @@
 
 现在你已经理解了如何使用项目模板，接下来可以：
 
-- 👉 CREATE_PROJECT.html  
+- 👉 [创建项目](CREATE_PROJECT.html)  
   使用模板创建或优化你的创新项目
 
-- 👉 LIFECYCLE.html  
+- 👉 [项目生命周期](LIFECYCLE.html)  
   了解项目在不同阶段应该关注什么
 
-- 👉 GOVERNANCE.html  
+- 👉 [治理与规则](GOVERNANCE.html)  
   查看创新项目的规则、责任和边界

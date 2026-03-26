@@ -1,3 +1,7 @@
+---
+title: 常见问题FAQ
+---
+
 # 常见问题（FAQ）
 
 > 🎯 适合谁：在参与创新过程中有疑问的人
@@ -152,11 +156,11 @@ GitHub Pages 会自动把：
 
 如果你已经解决了当前疑问，接下来可以：
 
-- 👉 GET_STARTED.html  
+- 👉 [新手入门](GET_STARTED.html)  
   回到新手入口，重新梳理整体流程
 
-- 👉 CREATE_PROJECT.html  
+- 👉 [创建项目](CREATE_PROJECT.html)  
   开始或继续推进你的创新项目
 
-- 👉 GOVERNANCE.html  
+- 👉 [治理与规则](GOVERNANCE.html)  
   查看规则和责任边界（如果你是管理者）
