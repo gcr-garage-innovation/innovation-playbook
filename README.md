@@ -41,3 +41,30 @@ How to use this GitHub organization for employee innovation
 
 > 💡 这里不是代码仓库  
 > 这里是 **创新发生的地方**
+
+---
+
+Innovation Playbook（网站首页）
+│
+├── 📘 快速开始
+│   └── GET_STARTED.html
+│       └─ 新手入口：第一次如何参与创新
+│
+├── 📚 使用指南
+│   ├── CREATE_PROJECT.html
+│   │   └─ 如何创建第一个创新项目 Repo
+│   │
+│   └── TEMPLATE_GUIDE.html
+│       └─ 如何使用项目模板快速启动
+│
+├── 🔄 项目生命周期
+│   └── LIFECYCLE.html
+│       └─ 项目从 Idea → Prototype → Graduation
+│
+├── ❓ 常见问题
+│   └── FAQ.html
+│       └─ 新手 & 普通参与者常见问题
+│
+└── 🏛️ 治理与规则
+    └── GOVERNANCE.html
+        └─ 规则、责任、管理者 FAQ
