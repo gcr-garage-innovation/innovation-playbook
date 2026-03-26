@@ -6,636 +6,416 @@
   <title>Innovation Playbook — GCR Garage Innovation</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
   <style>
-    /* ===== Variables — Fluent Design ===== */
     :root {
-      --c-bg: #f8f9fa;
+      --c-bg: #f0f2f5;
       --c-surface: #ffffff;
-      --c-border: #e8e8e8;
-      --c-text: #1a1a1a;
-      --c-text-secondary: #555;
+      --c-border: #e4e7ec;
+      --c-text: #1a1a2e;
+      --c-text-sub: #5f6b7a;
       --c-primary: #0078d4;
-      --c-primary-hover: #106ebe;
-      --c-primary-bg: #e8f4fd;
-      --c-success: #107c10;
+      --c-primary-dark: #005a9e;
+      --c-primary-light: #e8f4fd;
+      --c-accent: #50e6ff;
+      --c-success: #0e7a0d;
       --c-success-bg: #dff6dd;
-      --c-warning: #ca5010;
+      --c-warning: #c4820e;
       --c-warning-bg: #fff4ce;
-      --c-gradient-start: #0078d4;
-      --c-gradient-end: #004578;
-      --radius: 6px;
-      --radius-lg: 12px;
-      --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
-      --shadow-lg: 0 10px 25px rgba(0,0,0,.08);
-      --shadow-hover: 0 8px 24px rgba(0,120,212,.18);
-      --header-height: 56px;
-      --transition: .2s ease;
-      --sidebar-width: 240px;
+      --c-purple: #5c2d91;
+      --c-purple-bg: #ede1f5;
+      --radius: 8px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.05);
+      --shadow: 0 2px 8px rgba(0,0,0,.06);
+      --shadow-lg: 0 12px 32px rgba(0,0,0,.08);
+      --shadow-hover: 0 8px 28px rgba(0,120,212,.16);
+      --header-h: 56px;
+      --sidebar-w: 230px;
+      --ease: cubic-bezier(.4,0,.2,1);
     }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; scroll-behavior: smooth; }
-    body {
-      font-family: "Segoe UI", "Segoe UI Web", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--c-bg);
-      color: var(--c-text);
-      line-height: 1.6;
-      min-height: 100vh;
-    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:16px;scroll-behavior:smooth}
+    body{font-family:"Segoe UI","Noto Sans SC",-apple-system,sans-serif;background:var(--c-bg);color:var(--c-text);line-height:1.6}
+    a{color:var(--c-primary);text-decoration:none}
+    code{background:#eef1f6;padding:2px 7px;border-radius:4px;font-size:.88em;font-family:"Cascadia Code",Consolas,monospace}
 
     /* ===== Header ===== */
-    .app-header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      height: var(--header-height);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 24px;
-      background: linear-gradient(135deg, var(--c-gradient-start), var(--c-gradient-end));
-      color: #fff;
-      box-shadow: 0 1px 3px rgba(0,0,0,.15);
-    }
-    .header-left { display: flex; align-items: center; gap: 10px; }
-    .header-logo { font-size: 1.4rem; }
-    .app-title { font-size: 1rem; font-weight: 600; color: #fff; }
-    .header-right { display: flex; align-items: center; gap: 12px; }
-    .header-link {
-      color: rgba(255,255,255,.85); text-decoration: none; font-size: .85rem;
-      padding: 4px 10px; border-radius: var(--radius); transition: background var(--transition);
-    }
-    .header-link:hover { background: rgba(255,255,255,.15); color: #fff; }
-
-    /* ===== Layout ===== */
-    .app-container {
-      display: flex;
-      margin-top: var(--header-height);
-      min-height: calc(100vh - var(--header-height));
-    }
+    .header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--header-h);display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:var(--c-primary-dark);color:#fff;box-shadow:0 1px 4px rgba(0,0,0,.12)}
+    .header-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1rem}
+    .header-brand span:first-child{font-size:1.3rem}
+    .header-links{display:flex;gap:8px}
+    .header-links a{color:rgba(255,255,255,.8);font-size:.82rem;padding:5px 12px;border-radius:6px;transition:background .15s}
+    .header-links a:hover{background:rgba(255,255,255,.12);color:#fff}
 
     /* ===== Sidebar ===== */
-    .sidebar {
-      position: fixed; top: var(--header-height); left: 0; bottom: 0;
-      width: var(--sidebar-width);
-      background: var(--c-surface);
-      border-right: 1px solid var(--c-border);
-      padding: 16px 12px;
-      overflow-y: auto;
-      z-index: 50;
-      transition: transform var(--transition);
-    }
-    .sidebar h3 {
-      font-size: .75rem; text-transform: uppercase; letter-spacing: .5px;
-      color: var(--c-text-secondary); margin: 16px 12px 8px; font-weight: 600;
-    }
-    .sidebar h3:first-child { margin-top: 4px; }
-    .nav-list { list-style: none; }
-    .nav-item {
-      display: flex; align-items: center; gap: 10px;
-      padding: 10px 12px; margin-bottom: 2px;
-      border-radius: var(--radius);
-      cursor: pointer; font-size: .9rem; text-decoration: none; color: var(--c-text);
-      transition: background var(--transition);
-    }
-    .nav-item:hover { background: rgba(0,0,0,.03); }
-    .nav-item.active {
-      background: var(--c-primary-bg); color: var(--c-primary); font-weight: 600;
-      border-left: 3px solid var(--c-primary); padding-left: 9px;
-    }
-    .nav-icon { font-size: 1.1rem; flex-shrink: 0; }
+    .layout{display:flex;margin-top:var(--header-h);min-height:calc(100vh - var(--header-h))}
+    .sidebar{position:fixed;top:var(--header-h);left:0;bottom:0;width:var(--sidebar-w);background:var(--c-surface);border-right:1px solid var(--c-border);padding:20px 14px;overflow-y:auto;z-index:50;transition:transform .25s var(--ease)}
+    .sidebar h4{font-size:.7rem;text-transform:uppercase;letter-spacing:.8px;color:var(--c-text-sub);margin:20px 10px 6px;font-weight:700}
+    .sidebar h4:first-child{margin-top:0}
+    .side-nav{list-style:none}
+    .side-link{display:flex;align-items:center;gap:9px;padding:9px 12px;margin-bottom:1px;border-radius:var(--radius);font-size:.88rem;color:var(--c-text);transition:all .15s}
+    .side-link:hover{background:rgba(0,0,0,.03)}
+    .side-link.active{background:var(--c-primary-light);color:var(--c-primary);font-weight:600}
+    .side-icon{font-size:1rem;width:22px;text-align:center;flex-shrink:0}
 
     /* ===== Main ===== */
-    .main-content {
-      flex: 1; margin-left: var(--sidebar-width);
-      padding: 32px 48px;
-      max-width: 960px;
-    }
+    .main{flex:1;margin-left:var(--sidebar-w);padding:36px 48px;max-width:900px}
 
     /* ===== Hero ===== */
-    .hero {
-      text-align: center; padding: 48px 20px 40px;
-      margin-bottom: 40px;
-    }
-    .hero-icon { font-size: 4rem; margin-bottom: 12px; }
-    .hero h1 {
-      font-size: 2.2rem; font-weight: 700; margin-bottom: 12px;
-      background: linear-gradient(135deg, #0078d4, #50e6ff);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero-subtitle {
-      color: var(--c-text-secondary); font-size: 1.15rem; max-width: 600px;
-      margin: 0 auto 24px; line-height: 1.7;
-    }
-    .hero-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 28px; border-radius: 24px;
-      background: var(--c-primary); color: #fff; text-decoration: none;
-      font-size: 1rem; font-weight: 600;
-      transition: background var(--transition), box-shadow var(--transition);
-      box-shadow: 0 2px 8px rgba(0,120,212,.3);
-    }
-    .hero-cta:hover { background: var(--c-primary-hover); box-shadow: 0 4px 16px rgba(0,120,212,.4); }
+    .hero{text-align:center;padding:56px 16px 40px}
+    .hero-badge{display:inline-block;background:var(--c-primary-light);color:var(--c-primary);font-size:.78rem;font-weight:600;padding:4px 14px;border-radius:20px;margin-bottom:16px}
+    .hero h1{font-size:2.4rem;font-weight:800;margin-bottom:12px;background:linear-gradient(135deg,#0078d4 0%,#50e6ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-desc{color:var(--c-text-sub);font-size:1.1rem;max-width:540px;margin:0 auto 28px;line-height:1.8}
+    .hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+    .btn{display:inline-flex;align-items:center;gap:7px;padding:12px 26px;border-radius:28px;font-size:.95rem;font-weight:600;cursor:pointer;border:2px solid transparent;transition:all .2s var(--ease)}
+    .btn-fill{background:var(--c-primary);color:#fff;border-color:var(--c-primary);box-shadow:0 3px 12px rgba(0,120,212,.3)}
+    .btn-fill:hover{background:var(--c-primary-dark);border-color:var(--c-primary-dark);box-shadow:0 6px 20px rgba(0,120,212,.35);transform:translateY(-1px)}
+    .btn-outline{background:transparent;color:var(--c-primary);border-color:var(--c-primary)}
+    .btn-outline:hover{background:var(--c-primary-light)}
 
-    /* ===== Section ===== */
-    .section { margin-bottom: 48px; }
-    .section-header {
-      display: flex; align-items: center; gap: 10px;
-      margin-bottom: 20px; padding-bottom: 12px;
-      border-bottom: 2px solid var(--c-border);
-    }
-    .section-icon { font-size: 1.4rem; }
-    .section-title { font-size: 1.3rem; font-weight: 700; }
-    .section-desc { color: var(--c-text-secondary); font-size: .9rem; margin-left: auto; }
+    /* ===== Stats ===== */
+    .stats{display:flex;justify-content:center;gap:56px;padding:0 0 12px}
+    .stat{text-align:center}
+    .stat-val{font-size:2rem;font-weight:800;color:var(--c-primary)}
+    .stat-lbl{font-size:.8rem;color:var(--c-text-sub);margin-top:2px}
 
-    /* ===== Cards ===== */
-    .card-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 16px;
-    }
-    .card {
-      background: var(--c-surface);
-      border: 1px solid var(--c-border);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      cursor: pointer; text-decoration: none; color: inherit;
-      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
-      display: flex; flex-direction: column;
-    }
-    .card:hover {
-      border-color: var(--c-primary);
-      box-shadow: var(--shadow-hover);
-      transform: translateY(-2px);
-    }
-    .card-icon { font-size: 2rem; margin-bottom: 12px; }
-    .card-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
-    .card-desc { font-size: .88rem; color: var(--c-text-secondary); line-height: 1.6; flex: 1; }
-    .card-tag {
-      display: inline-block; margin-top: 12px;
-      padding: 3px 10px; border-radius: 12px;
-      font-size: .75rem; font-weight: 600;
-    }
-    .tag-beginner { background: var(--c-success-bg); color: var(--c-success); }
-    .tag-guide { background: var(--c-primary-bg); color: var(--c-primary); }
-    .tag-advanced { background: var(--c-warning-bg); color: var(--c-warning); }
+    /* ===== Sections ===== */
+    .sec{margin-bottom:52px}
+    .sec-head{display:flex;align-items:baseline;gap:10px;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--c-border)}
+    .sec-icon{font-size:1.3rem}
+    .sec-title{font-size:1.25rem;font-weight:700}
+    .sec-sub{color:var(--c-text-sub);font-size:.85rem;margin-left:auto}
 
     /* ===== Steps ===== */
-    .steps { display: flex; flex-direction: column; gap: 0; }
-    .step {
-      display: flex; gap: 20px; position: relative;
-      padding: 20px 0;
-    }
-    .step:not(:last-child)::before {
-      content: ''; position: absolute;
-      left: 19px; top: 60px; bottom: 0;
-      width: 2px; background: var(--c-border);
-    }
-    .step-number {
-      flex-shrink: 0; width: 40px; height: 40px;
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-size: .9rem; font-weight: 700;
-      background: var(--c-primary); color: #fff;
-      box-shadow: 0 2px 8px rgba(0,120,212,.2);
-      z-index: 1;
-    }
-    .step-content { flex: 1; padding-top: 6px; }
-    .step-title { font-weight: 600; font-size: 1.05rem; margin-bottom: 4px; }
-    .step-desc { color: var(--c-text-secondary); font-size: .9rem; }
-    .step-link {
-      display: inline-flex; align-items: center; gap: 4px;
-      color: var(--c-primary); text-decoration: none; font-size: .88rem; font-weight: 500;
-      margin-top: 6px;
-    }
-    .step-link:hover { text-decoration: underline; }
+    .timeline{position:relative;padding-left:36px}
+    .timeline::before{content:'';position:absolute;left:15px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--c-primary),var(--c-accent))}
+    .tl-item{position:relative;padding:0 0 28px}
+    .tl-item:last-child{padding-bottom:0}
+    .tl-dot{position:absolute;left:-36px;top:2px;width:32px;height:32px;border-radius:50%;background:var(--c-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:700;box-shadow:0 2px 8px rgba(0,120,212,.25);z-index:1}
+    .tl-title{font-weight:700;font-size:1.02rem;margin-bottom:4px}
+    .tl-desc{color:var(--c-text-sub);font-size:.9rem;line-height:1.7}
+    .tl-link{display:inline-flex;align-items:center;gap:4px;font-size:.85rem;font-weight:600;margin-top:6px;color:var(--c-primary)}
+    .tl-link:hover{text-decoration:underline}
 
-    /* ===== FAQ Accordion ===== */
-    .accordion { display: flex; flex-direction: column; gap: 8px; }
-    .accordion-item {
-      border: 1px solid var(--c-border); border-radius: var(--radius-lg);
-      overflow: hidden; background: var(--c-surface);
-    }
-    .accordion-trigger {
-      width: 100%; background: none; border: none;
-      padding: 16px 20px; font-size: .95rem;
-      text-align: left; cursor: pointer;
-      display: flex; align-items: center; justify-content: space-between;
-      font-weight: 500; color: var(--c-text);
-      transition: background var(--transition);
-    }
-    .accordion-trigger:hover { background: var(--c-bg); }
-    .accordion-arrow { transition: transform var(--transition); font-size: .8rem; }
-    .accordion-item.open .accordion-arrow { transform: rotate(180deg); }
-    .accordion-body {
-      max-height: 0; overflow: hidden;
-      transition: max-height .3s ease;
-    }
-    .accordion-item.open .accordion-body { max-height: 400px; }
-    .accordion-body-inner {
-      padding: 0 20px 16px;
-      font-size: .9rem; color: var(--c-text-secondary); line-height: 1.7;
-    }
+    /* ===== Cards ===== */
+    .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+    .card{background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:all .2s var(--ease)}
+    .card:hover{border-color:var(--c-primary);box-shadow:var(--shadow-hover);transform:translateY(-3px)}
+    .card-ico{font-size:1.8rem;margin-bottom:10px}
+    .card-name{font-weight:700;font-size:1rem;margin-bottom:6px}
+    .card-info{font-size:.85rem;color:var(--c-text-sub);line-height:1.6;flex:1}
+    .card-tag{display:inline-block;margin-top:12px;padding:3px 10px;border-radius:10px;font-size:.72rem;font-weight:700}
+    .t-new{background:var(--c-success-bg);color:var(--c-success)}
+    .t-guide{background:var(--c-primary-light);color:var(--c-primary)}
+    .t-adv{background:var(--c-warning-bg);color:var(--c-warning)}
 
-    /* ===== Role Cards ===== */
-    .role-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
-    .role-card {
-      text-align: center; padding: 24px 16px;
-      background: var(--c-surface); border: 1px solid var(--c-border);
-      border-radius: var(--radius-lg);
-      transition: box-shadow var(--transition);
-    }
-    .role-card:hover { box-shadow: var(--shadow); }
-    .role-icon { font-size: 2.2rem; margin-bottom: 8px; }
-    .role-name { font-weight: 600; font-size: .95rem; margin-bottom: 4px; }
-    .role-desc { font-size: .82rem; color: var(--c-text-secondary); }
+    /* ===== Lifecycle ===== */
+    .lc-pipe{display:flex;align-items:center;justify-content:center;gap:0;margin:16px 0;flex-wrap:wrap}
+    .lc-node{display:flex;flex-direction:column;align-items:center;padding:14px 16px;min-width:110px;text-align:center;cursor:default}
+    .lc-circle{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:8px;transition:transform .2s}
+    .lc-node:hover .lc-circle{transform:scale(1.12)}
+    .lc-name{font-weight:700;font-size:.88rem}
+    .lc-sub{font-size:.75rem;color:var(--c-text-sub);margin-top:2px}
+    .lc-arrow{font-size:1.2rem;color:var(--c-border);margin:0 2px}
+    .lc-detail{background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius-lg);padding:20px 24px;margin-top:12px}
+    .lc-detail p{margin-bottom:8px;font-size:.9rem;line-height:1.7}
+    .lc-detail p:last-child{margin-bottom:0}
+
+    /* ===== Roles ===== */
+    .roles{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+    .role{text-align:center;padding:28px 16px;background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius-lg);text-decoration:none;color:inherit;transition:all .2s var(--ease)}
+    .role:hover{box-shadow:var(--shadow);border-color:var(--c-primary);transform:translateY(-2px)}
+    .role-ico{font-size:2.2rem;margin-bottom:8px}
+    .role-name{font-weight:700;font-size:.92rem;margin-bottom:4px}
+    .role-hint{font-size:.78rem;color:var(--c-primary)}
+
+    /* ===== FAQ ===== */
+    .acc{display:flex;flex-direction:column;gap:8px}
+    .acc-item{border:1px solid var(--c-border);border-radius:var(--radius-lg);overflow:hidden;background:var(--c-surface)}
+    .acc-btn{width:100%;background:none;border:none;padding:16px 20px;font-size:.92rem;text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-weight:600;color:var(--c-text);transition:background .15s}
+    .acc-btn:hover{background:var(--c-bg)}
+    .acc-chevron{transition:transform .2s;font-size:.75rem;color:var(--c-text-sub)}
+    .acc-item.open .acc-chevron{transform:rotate(180deg)}
+    .acc-body{max-height:0;overflow:hidden;transition:max-height .3s var(--ease)}
+    .acc-item.open .acc-body{max-height:300px}
+    .acc-inner{padding:0 20px 16px;font-size:.88rem;color:var(--c-text-sub);line-height:1.8}
 
     /* ===== Footer ===== */
-    .footer {
-      text-align: center; padding: 24px;
-      color: var(--c-text-secondary); font-size: .85rem;
-      border-top: 1px solid var(--c-border); margin-top: 40px;
-    }
+    .footer{text-align:center;padding:28px 16px;border-top:1px solid var(--c-border);margin-top:48px;color:var(--c-text-sub);font-size:.85rem}
 
-    /* ===== Mobile toggle ===== */
-    .sidebar-toggle {
-      display: none; position: fixed; bottom: 20px; left: 20px; z-index: 200;
-      width: 48px; height: 48px; border-radius: 50%;
-      background: var(--c-primary); color: #fff; border: none;
-      font-size: 1.3rem; cursor: pointer; box-shadow: var(--shadow-lg);
-      align-items: center; justify-content: center;
-    }
+    /* ===== Fade In ===== */
+    .fi{opacity:0;transform:translateY(24px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+    .fi.v{opacity:1;transform:translateY(0)}
 
-    /* ===== Responsive ===== */
-    @media (max-width: 768px) {
-      .sidebar { transform: translateX(-100%); width: 280px; }
-      .sidebar.open { transform: translateX(0); }
-      .sidebar-toggle { display: flex; }
-      .main-content { margin-left: 0; padding: 24px 16px; }
-      .hero h1 { font-size: 1.6rem; }
-      .hero-subtitle { font-size: 1rem; }
-      .card-grid { grid-template-columns: 1fr; }
-      .role-grid { grid-template-columns: repeat(2, 1fr); }
-      .step { gap: 14px; }
-      .lifecycle-track { flex-direction: column; }
-      .lifecycle-connector { width: 2px; height: 24px; }
+    /* ===== Mobile ===== */
+    .mob-toggle{display:none;position:fixed;bottom:20px;left:20px;z-index:200;width:48px;height:48px;border-radius:50%;background:var(--c-primary);color:#fff;border:none;font-size:1.3rem;cursor:pointer;box-shadow:var(--shadow-lg);align-items:center;justify-content:center}
+    @media(max-width:768px){
+      .sidebar{transform:translateX(-100%);width:260px}
+      .sidebar.open{transform:translateX(0)}
+      .mob-toggle{display:flex}
+      .main{margin-left:0;padding:24px 16px}
+      .hero h1{font-size:1.7rem}
+      .hero-desc{font-size:.98rem}
+      .cards{grid-template-columns:1fr}
+      .roles{grid-template-columns:repeat(2,1fr)}
+      .lc-pipe{flex-direction:column}
+      .lc-arrow{transform:rotate(90deg)}
+      .stats{gap:28px}
+      .stat-val{font-size:1.5rem}
+      .header-links a span.link-text{display:none}
     }
-
-    /* ===== Lifecycle Visual ===== */
-    .lifecycle-track {
-      display: flex; align-items: center; justify-content: center;
-      gap: 0; flex-wrap: wrap; margin: 8px 0 16px;
-    }
-    .lifecycle-node {
-      display: flex; flex-direction: column; align-items: center;
-      padding: 16px 12px; min-width: 120px; text-align: center;
-    }
-    .lifecycle-dot {
-      width: 52px; height: 52px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; margin-bottom: 8px;
-      box-shadow: 0 3px 10px rgba(0,0,0,.1);
-    }
-    .lifecycle-label { font-weight: 600; font-size: .9rem; }
-    .lifecycle-desc { font-size: .78rem; color: var(--c-text-secondary); margin-top: 2px; }
-    .lifecycle-connector {
-      width: 40px; height: 3px; border-radius: 2px;
-      background: linear-gradient(90deg, var(--c-border), var(--c-primary));
-    }
-
-    /* ===== Animated Entry ===== */
-    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-    /* ===== Stat Bar ===== */
-    .stat-bar {
-      display: flex; justify-content: center; gap: 48px;
-      padding: 20px 0; margin: 0 0 20px;
-    }
-    .stat-item { text-align: center; }
-    .stat-number { font-size: 1.8rem; font-weight: 700; color: var(--c-primary); }
-    .stat-label { font-size: .82rem; color: var(--c-text-secondary); margin-top: 2px; }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="app-header">
-    <div class="header-left">
-      <span class="header-logo">🚀</span>
-      <span class="app-title">Innovation Playbook</span>
-    </div>
-    <div class="header-right">
-      <a class="header-link" href="https://github.com/gcr-garage-innovation" target="_blank">🏢 Organization</a>
-      <a class="header-link" href="https://github.com/gcr-garage-innovation/innovation-playbook" target="_blank">📦 Repo</a>
-    </div>
-  </header>
-
-  <div class="app-container">
-    <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar">
-      <h3>开始</h3>
-      <ul class="nav-list">
-        <li><a class="nav-item active" href="#welcome"><span class="nav-icon">🏠</span> 首页</a></li>
-        <li><a class="nav-item" href="#quickstart"><span class="nav-icon">⚡</span> 快速开始</a></li>
-      </ul>
-      <h3>指南</h3>
-      <ul class="nav-list">
-        <li><a class="nav-item" href="GET_STARTED.html"><span class="nav-icon">🎯</span> 新手入门</a></li>
-        <li><a class="nav-item" href="CREATE_PROJECT.html"><span class="nav-icon">🛠️</span> 创建项目</a></li>
-        <li><a class="nav-item" href="TEMPLATE_GUIDE.html"><span class="nav-icon">📋</span> 模板指南</a></li>
-      </ul>
-      <h3>进阶</h3>
-      <ul class="nav-list">
-        <li><a class="nav-item" href="#lifecycle"><span class="nav-icon">🔄</span> 项目生命周期</a></li>
-        <li><a class="nav-item" href="GOVERNANCE.html"><span class="nav-icon">🏛️</span> 治理与规则</a></li>
-        <li><a class="nav-item" href="FAQ.html"><span class="nav-icon">❓</span> 常见问题</a></li>
-      </ul>
-    </aside>
-
-    <!-- Main Content -->
-    <main class="main-content">
-
-      <!-- Hero -->
-      <section class="hero" id="welcome">
-        <div class="hero-icon">🚀</div>
-        <h1>Innovation Playbook</h1>
-        <p class="hero-subtitle">
-          从零开始参与创新项目的完整指南<br>
-          无论你是否有技术背景，都能按步骤轻松参与
-        </p>
-        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-          <a class="hero-cta" href="#quickstart">⚡ 立即开始</a>
-          <a class="hero-cta" href="#guides" style="background:transparent;color:var(--c-primary);border:2px solid var(--c-primary);box-shadow:none;">📚 浏览指南</a>
-        </div>
-        <div class="stat-bar">
-          <div class="stat-item"><div class="stat-number">3</div><div class="stat-label">步开始创新</div></div>
-          <div class="stat-item"><div class="stat-number">6</div><div class="stat-label">份详细指南</div></div>
-          <div class="stat-item"><div class="stat-number">0</div><div class="stat-label">技术门槛</div></div>
-        </div>
-      </section>
-
-      <!-- Quick Start Steps -->
-      <section class="section fade-in" id="quickstart">
-        <div class="section-header">
-          <span class="section-icon">⚡</span>
-          <span class="section-title">三步开始创新</span>
-          <span class="section-desc">从想法到项目</span>
-        </div>
-        <div class="steps">
-          <div class="step">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <div class="step-title">加入创新组织</div>
-              <div class="step-desc">联系管理员加入 GitHub Organization 和 incubator-creators Team，获得创建项目的权限。</div>
-              <a class="step-link" href="GET_STARTED.html">查看详细步骤 →</a>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <div class="step-title">使用模板创建项目</div>
-              <div class="step-desc">用 <code>template-innovation-repo</code> 模板一键创建项目 Repository，填写 README 中的问题定义。</div>
-              <a class="step-link" href="CREATE_PROJECT.html">创建项目指南 →</a>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <div class="step-title">开始尝试！</div>
-              <div class="step-desc">不需要完美方案，快速构建 PoC / Demo / Agent。记住：<strong>完成 > 完美</strong>。</div>
-              <a class="step-link" href="TEMPLATE_GUIDE.html">模板使用指南 →</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Guide Cards -->
-      <section class="section fade-in" id="guides">
-        <div class="section-header">
-          <span class="section-icon">📚</span>
-          <span class="section-title">使用指南</span>
-          <span class="section-desc">选择你需要的内容</span>
-        </div>
-        <div class="card-grid">
-          <a class="card" href="GET_STARTED.html">
-            <div class="card-icon">🎯</div>
-            <div class="card-title">快速开始</div>
-            <div class="card-desc">第一次接触创新项目？从这里开始，了解如何参与和迈出第一步。</div>
-            <span class="card-tag tag-beginner">新手推荐</span>
-          </a>
-          <a class="card" href="CREATE_PROJECT.html">
-            <div class="card-icon">🛠️</div>
-            <div class="card-title">创建项目</div>
-            <div class="card-desc">已有想法？一步步指导你创建第一个创新项目 Repository。</div>
-            <span class="card-tag tag-beginner">新手推荐</span>
-          </a>
-          <a class="card" href="TEMPLATE_GUIDE.html">
-            <div class="card-icon">📋</div>
-            <div class="card-title">模板指南</div>
-            <div class="card-desc">了解如何正确使用创新项目模板，快速规范地启动项目。</div>
-            <span class="card-tag tag-guide">使用指南</span>
-          </a>
-          <a class="card" href="FAQ.html">
-            <div class="card-icon">❓</div>
-            <div class="card-title">常见问题</div>
-            <div class="card-desc">新手使用 GitHub 和创新项目过程中的常见问题与解答。</div>
-            <span class="card-tag tag-guide">使用指南</span>
-          </a>
-          <a class="card" href="GOVERNANCE.html">
-            <div class="card-icon">🏛️</div>
-            <div class="card-title">治理与规则</div>
-            <div class="card-desc">创新项目的规则、责任和边界，适合管理者和组织负责人。</div>
-            <span class="card-tag tag-advanced">进阶</span>
-          </a>
-          <a class="card" href="#lifecycle">
-            <div class="card-icon">🔄</div>
-            <div class="card-title">项目生命周期</div>
-            <div class="card-desc">从 Idea → Prototype → Active → Graduation 的完整流程。</div>
-            <span class="card-tag tag-advanced">进阶</span>
-          </a>
-        </div>
-      </section>
-
-      <!-- Lifecycle -->
-      <section class="section fade-in" id="lifecycle">
-        <div class="section-header">
-          <span class="section-icon">🔄</span>
-          <span class="section-title">项目生命周期</span>
-          <span class="section-desc">从想法到产品的旅程</span>
-        </div>
-        <div class="lifecycle-track">
-          <div class="lifecycle-node">
-            <div class="lifecycle-dot" style="background:#fff4ce;color:#ca5010;">💡</div>
-            <div class="lifecycle-label">Idea</div>
-            <div class="lifecycle-desc">一句话想法</div>
-          </div>
-          <div class="lifecycle-connector"></div>
-          <div class="lifecycle-node">
-            <div class="lifecycle-dot" style="background:#e8f4fd;color:#0078d4;">🧪</div>
-            <div class="lifecycle-label">Prototype</div>
-            <div class="lifecycle-desc">快速验证</div>
-          </div>
-          <div class="lifecycle-connector"></div>
-          <div class="lifecycle-node">
-            <div class="lifecycle-dot" style="background:#dff6dd;color:#107c10;">🚀</div>
-            <div class="lifecycle-label">Active</div>
-            <div class="lifecycle-desc">持续迭代</div>
-          </div>
-          <div class="lifecycle-connector"></div>
-          <div class="lifecycle-node">
-            <div class="lifecycle-dot" style="background:#ede1f5;color:#5c2d91;">🎓</div>
-            <div class="lifecycle-label">Graduation</div>
-            <div class="lifecycle-desc">进入正式产品</div>
-          </div>
-        </div>
-        <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius-lg);padding:20px;margin-top:8px;">
-          <p style="margin-bottom:10px;"><strong>💡 Idea →</strong> 一句话描述你想解决的问题，不需要完整方案。</p>
-          <p style="margin-bottom:10px;"><strong>🧪 Prototype →</strong> 快速构建 PoC / Demo，用最小成本学到最多。</p>
-          <p style="margin-bottom:10px;"><strong>🚀 Active →</strong> 项目持续迭代，有稳定使用场景和小范围用户。</p>
-          <p><strong>🎓 Graduation →</strong> 项目成熟，迁移到正式团队或产品线。</p>
-        </div>
-      </section>
-
-      <!-- Who Are You -->
-      <section class="section fade-in">
-        <div class="section-header">
-          <span class="section-icon">👤</span>
-          <span class="section-title">你是谁？</span>
-          <span class="section-desc">找到最适合你的入口</span>
-        </div>
-        <div class="role-grid">
-          <a class="role-card" href="GET_STARTED.html" style="text-decoration:none;color:inherit;">
-            <div class="role-icon">🌱</div>
-            <div class="role-name">第一次参与创新</div>
-            <div class="role-desc">从新手入门开始 →</div>
-          </a>
-          <a class="role-card" href="CREATE_PROJECT.html" style="text-decoration:none;color:inherit;">
-            <div class="role-icon">💡</div>
-            <div class="role-name">有想法想创建项目</div>
-            <div class="role-desc">去创建项目 →</div>
-          </a>
-          <a class="role-card" href="TEMPLATE_GUIDE.html" style="text-decoration:none;color:inherit;">
-            <div class="role-icon">📦</div>
-            <div class="role-name">不确定模板怎么用</div>
-            <div class="role-desc">看模板指南 →</div>
-          </a>
-          <a class="role-card" href="GOVERNANCE.html" style="text-decoration:none;color:inherit;">
-            <div class="role-icon">🧭</div>
-            <div class="role-name">管理者 / 负责人</div>
-            <div class="role-desc">看治理与规则 →</div>
-          </a>
-        </div>
-      </section>
-
-      <!-- FAQ -->
-      <section class="section fade-in" id="faq">
-        <div class="section-header">
-          <span class="section-icon">❓</span>
-          <span class="section-title">常见问题</span>
-        </div>
-        <div class="accordion">
-          <div class="accordion-item">
-            <button class="accordion-trigger" onclick="toggleFaq(this)">
-              <span>🤔 我完全不会 GitHub，可以参与创新项目吗？</span>
-              <span class="accordion-arrow">▼</span>
-            </button>
-            <div class="accordion-body"><div class="accordion-body-inner">
-              <strong>✅ 可以！</strong> 你不需要会写代码。你只需要会阅读文档、会点击按钮、愿意尝试一个想法。本 Playbook 的设计目标是让你在"使用中学会 GitHub"。
-            </div></div>
-          </div>
-          <div class="accordion-item">
-            <button class="accordion-trigger" onclick="toggleFaq(this)">
-              <span>🤔 只有一个不成熟的想法，可以创建项目吗？</span>
-              <span class="accordion-arrow">▼</span>
-            </button>
-            <div class="accordion-body"><div class="accordion-body-inner">
-              <strong>✅ 非常鼓励！</strong> 创新的正确顺序是：想法 → 尝试 → 学习 → 再调整。"我想试试用 AI 自动生成会议总结"这样一句话就足够了。
-            </div></div>
-          </div>
-          <div class="accordion-item">
-            <button class="accordion-trigger" onclick="toggleFaq(this)">
-              <span>🤔 使用项目模板会限制我的想法吗？</span>
-              <span class="accordion-arrow">▼</span>
-            </button>
-            <div class="accordion-body"><div class="accordion-body-inner">
-              <strong>❌ 不会。</strong> 模板只是给你一个起点。你可以删除不需要的部分、增加自己的内容、随时调整方向。模板是工具，不是规则。
-            </div></div>
-          </div>
-          <div class="accordion-item">
-            <button class="accordion-trigger" onclick="toggleFaq(this)">
-              <span>🤔 项目停滞了怎么办？</span>
-              <span class="accordion-arrow">▼</span>
-            </button>
-            <div class="accordion-body"><div class="accordion-body-inner">
-              <strong>✅ 没关系。</strong> 创新项目可以暂停、归档、作为学习案例保留。停滞 ≠ 失败。创新的价值体现在学习速度和新机会的发现。
-            </div></div>
-          </div>
-        </div>
-        <p style="margin-top:16px;text-align:center;">
-          <a class="step-link" href="FAQ.html" style="font-size:.95rem;">查看全部常见问题 →</a>
-        </p>
-      </section>
-
-      <!-- Footer -->
-      <footer class="footer">
-        <p><strong>📘 Innovation Playbook</strong> · GCR Garage Innovation</p>
-        <p style="margin-top:6px;font-style:italic;">不要等"准备好"，现在就开始 🚀</p>
-      </footer>
-
-    </main>
+<!-- Header -->
+<header class="header">
+  <div class="header-brand"><span>🚀</span><span>Innovation Playbook</span></div>
+  <div class="header-links">
+    <a href="https://github.com/gcr-garage-innovation" target="_blank">🏢 <span class="link-text">Organization</span></a>
+    <a href="https://github.com/gcr-garage-innovation/innovation-playbook" target="_blank">📦 <span class="link-text">GitHub</span></a>
   </div>
+</header>
 
-  <!-- Mobile sidebar toggle -->
-  <button class="sidebar-toggle" id="sidebar-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
+<div class="layout">
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <h4>首页</h4>
+    <ul class="side-nav">
+      <li><a class="side-link active" href="#welcome"><span class="side-icon">🏠</span>概览</a></li>
+      <li><a class="side-link" href="#quickstart"><span class="side-icon">⚡</span>快速开始</a></li>
+      <li><a class="side-link" href="#guides"><span class="side-icon">📚</span>使用指南</a></li>
+    </ul>
+    <h4>详细文档</h4>
+    <ul class="side-nav">
+      <li><a class="side-link" href="GET_STARTED.html"><span class="side-icon">🎯</span>新手入门</a></li>
+      <li><a class="side-link" href="CREATE_PROJECT.html"><span class="side-icon">🛠️</span>创建项目</a></li>
+      <li><a class="side-link" href="TEMPLATE_GUIDE.html"><span class="side-icon">📋</span>模板指南</a></li>
+      <li><a class="side-link" href="LIFECYCLE.html"><span class="side-icon">🔄</span>项目生命周期</a></li>
+    </ul>
+    <h4>参考</h4>
+    <ul class="side-nav">
+      <li><a class="side-link" href="GOVERNANCE.html"><span class="side-icon">🏛️</span>治理与规则</a></li>
+      <li><a class="side-link" href="FAQ.html"><span class="side-icon">❓</span>常见问题</a></li>
+    </ul>
+  </aside>
 
-  <script>
-    // FAQ accordion
-    function toggleFaq(trigger) {
-      const item = trigger.closest('.accordion-item');
-      // Close others
-      document.querySelectorAll('.accordion-item').forEach(i => {
-        if (i !== item) i.classList.remove('open');
-      });
-      item.classList.toggle('open');
-    }
+  <!-- Main -->
+  <main class="main">
 
-    // Scroll-aware sidebar active state
-    const sections = document.querySelectorAll('section[id]');
-    const navItems = document.querySelectorAll('.sidebar .nav-item[href^="#"]');
+    <!-- ▸ Hero -->
+    <section class="hero" id="welcome">
+      <span class="hero-badge">📘 GCR Garage Innovation</span>
+      <h1>Innovation Playbook</h1>
+      <p class="hero-desc">帮助每一位员工——无论技术背景——从零开始发起创新项目。<br>从想法到原型，从探索到毕业，这里是你的完整指南。</p>
+      <div class="hero-actions">
+        <a class="btn btn-fill" href="#quickstart">⚡ 三步开始</a>
+        <a class="btn btn-outline" href="#guides">📚 浏览全部指南</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="stat-val">3</div><div class="stat-lbl">步开始创新</div></div>
+        <div class="stat"><div class="stat-val">6</div><div class="stat-lbl">份详细文档</div></div>
+        <div class="stat"><div class="stat-val">0</div><div class="stat-lbl">技术门槛</div></div>
+      </div>
+    </section>
 
-    function updateActiveNav() {
-      let current = 'welcome';
-      sections.forEach(sec => {
-        if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
-      });
-      navItems.forEach(item => {
-        item.classList.toggle('active', item.getAttribute('href') === '#' + current);
-      });
-    }
-    window.addEventListener('scroll', updateActiveNav, { passive: true });
+    <!-- ▸ Quick Start -->
+    <section class="sec fi" id="quickstart">
+      <div class="sec-head">
+        <span class="sec-icon">⚡</span>
+        <span class="sec-title">三步开始创新</span>
+        <span class="sec-sub">10 分钟内完成</span>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot">1</div>
+          <div class="tl-title">加入创新组织</div>
+          <div class="tl-desc">联系管理员加入 GitHub Organization 和 <code>incubator-creators</code> Team，获取创建项目的权限。</div>
+          <a class="tl-link" href="GET_STARTED.html">详细步骤 →</a>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">2</div>
+          <div class="tl-title">用模板创建项目</div>
+          <div class="tl-desc">使用 <code>template-innovation-repo</code> 一键创建 Repository，在 README 中用 2-3 句话写下你想解决的问题。</div>
+          <a class="tl-link" href="CREATE_PROJECT.html">创建指南 →</a>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">3</div>
+          <div class="tl-title">开始动手！</div>
+          <div class="tl-desc">写第一版代码、画流程图、用 Copilot 做 Demo——不要等完美方案。<strong>完成 > 完美。</strong></div>
+          <a class="tl-link" href="TEMPLATE_GUIDE.html">模板指南 →</a>
+        </div>
+      </div>
+    </section>
 
-    // Fade-in on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    <!-- ▸ Who Are You -->
+    <section class="sec fi">
+      <div class="sec-head">
+        <span class="sec-icon">👤</span>
+        <span class="sec-title">你想做什么？</span>
+        <span class="sec-sub">选择最匹配的入口</span>
+      </div>
+      <div class="roles">
+        <a class="role" href="GET_STARTED.html">
+          <div class="role-ico">🌱</div>
+          <div class="role-name">第一次参与</div>
+          <div class="role-hint">新手入门 →</div>
+        </a>
+        <a class="role" href="CREATE_PROJECT.html">
+          <div class="role-ico">💡</div>
+          <div class="role-name">创建新项目</div>
+          <div class="role-hint">创建指南 →</div>
+        </a>
+        <a class="role" href="TEMPLATE_GUIDE.html">
+          <div class="role-ico">📦</div>
+          <div class="role-name">使用模板</div>
+          <div class="role-hint">模板指南 →</div>
+        </a>
+        <a class="role" href="GOVERNANCE.html">
+          <div class="role-ico">🧭</div>
+          <div class="role-name">管理者 / 负责人</div>
+          <div class="role-hint">治理规则 →</div>
+        </a>
+      </div>
+    </section>
 
-    // Close mobile sidebar on link click
-    document.querySelectorAll('.nav-item').forEach(item => {
-      item.addEventListener('click', () => document.getElementById('sidebar').classList.remove('open'));
-    });
+    <!-- ▸ Guides -->
+    <section class="sec fi" id="guides">
+      <div class="sec-head">
+        <span class="sec-icon">📚</span>
+        <span class="sec-title">全部指南</span>
+      </div>
+      <div class="cards">
+        <a class="card" href="GET_STARTED.html">
+          <div class="card-ico">🎯</div>
+          <div class="card-name">新手入门</div>
+          <div class="card-info">第一次接触创新？从这里了解如何参与、如何迈出第一步。</div>
+          <span class="card-tag t-new">推荐起点</span>
+        </a>
+        <a class="card" href="CREATE_PROJECT.html">
+          <div class="card-ico">🛠️</div>
+          <div class="card-name">创建项目</div>
+          <div class="card-info">已有想法？一步步教你创建第一个创新 Repository。</div>
+          <span class="card-tag t-new">推荐起点</span>
+        </a>
+        <a class="card" href="TEMPLATE_GUIDE.html">
+          <div class="card-ico">📋</div>
+          <div class="card-name">模板指南</div>
+          <div class="card-info">如何正确使用创新项目模板，快速规范地启动。</div>
+          <span class="card-tag t-guide">操作指南</span>
+        </a>
+        <a class="card" href="LIFECYCLE.html">
+          <div class="card-ico">🔄</div>
+          <div class="card-name">项目生命周期</div>
+          <div class="card-info">Idea → Prototype → Active → Graduation 完整流程。</div>
+          <span class="card-tag t-guide">操作指南</span>
+        </a>
+        <a class="card" href="FAQ.html">
+          <div class="card-ico">❓</div>
+          <div class="card-name">常见问题</div>
+          <div class="card-info">使用过程中的疑问？这里有答案。</div>
+          <span class="card-tag t-adv">参考</span>
+        </a>
+        <a class="card" href="GOVERNANCE.html">
+          <div class="card-ico">🏛️</div>
+          <div class="card-name">治理与规则</div>
+          <div class="card-info">规则、责任和边界——给管理者和组织负责人。</div>
+          <span class="card-tag t-adv">参考</span>
+        </a>
+      </div>
+    </section>
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          history.replaceState(null, '', a.getAttribute('href'));
-        }
-      });
-    });
-  </script>
+    <!-- ▸ Lifecycle -->
+    <section class="sec fi" id="lifecycle">
+      <div class="sec-head">
+        <span class="sec-icon">🔄</span>
+        <span class="sec-title">项目生命周期</span>
+      </div>
+      <div class="lc-pipe">
+        <div class="lc-node"><div class="lc-circle" style="background:#fff4ce">💡</div><div class="lc-name">Idea</div><div class="lc-sub">记录想法</div></div>
+        <div class="lc-arrow">→</div>
+        <div class="lc-node"><div class="lc-circle" style="background:var(--c-primary-light)">🧪</div><div class="lc-name">Prototype</div><div class="lc-sub">快速验证</div></div>
+        <div class="lc-arrow">→</div>
+        <div class="lc-node"><div class="lc-circle" style="background:var(--c-success-bg)">🚀</div><div class="lc-name">Active</div><div class="lc-sub">持续迭代</div></div>
+        <div class="lc-arrow">→</div>
+        <div class="lc-node"><div class="lc-circle" style="background:var(--c-purple-bg)">🎓</div><div class="lc-name">Graduation</div><div class="lc-sub">进入产品</div></div>
+      </div>
+      <div class="lc-detail">
+        <p>💡 <strong>Idea</strong> — 用一句话写下你想解决的问题，创建 Repo 并标记 <code>idea</code>。</p>
+        <p>🧪 <strong>Prototype</strong> — 快速构建 PoC / Demo，用最小成本验证可行性。</p>
+        <p>🚀 <strong>Active</strong> — 有稳定使用场景和小范围用户，持续收集反馈。</p>
+        <p>🎓 <strong>Graduation</strong> — 项目成熟、业务价值明确，迁入正式产品线。<a href="LIFECYCLE.html" style="margin-left:8px;font-weight:600;">详细了解 →</a></p>
+      </div>
+    </section>
 
+    <!-- ▸ FAQ -->
+    <section class="sec fi" id="faq">
+      <div class="sec-head">
+        <span class="sec-icon">❓</span>
+        <span class="sec-title">常见问题</span>
+      </div>
+      <div class="acc">
+        <div class="acc-item">
+          <button class="acc-btn" onclick="toggleAcc(this)"><span>我完全不会 GitHub，可以参与吗？</span><span class="acc-chevron">▼</span></button>
+          <div class="acc-body"><div class="acc-inner"><strong>✅ 当然可以。</strong>你不需要会写代码。本 Playbook 的设计目标就是让你在"使用中学会"——只需跟着步骤点击即可。</div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-btn" onclick="toggleAcc(this)"><span>想法还不成熟，可以创建项目吗？</span><span class="acc-chevron">▼</span></button>
+          <div class="acc-body"><div class="acc-inner"><strong>✅ 非常鼓励。</strong>创新的正确顺序是：想法 → 尝试 → 学习 → 再调整。一句话想法就足以开始。</div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-btn" onclick="toggleAcc(this)"><span>模板会限制我的创意吗？</span><span class="acc-chevron">▼</span></button>
+          <div class="acc-body"><div class="acc-inner"><strong>❌ 不会。</strong>模板是起点不是终点。你可以自由删改内容、调整结构。它只是帮你少踩坑。</div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-btn" onclick="toggleAcc(this)"><span>项目停滞了算失败吗？</span><span class="acc-chevron">▼</span></button>
+          <div class="acc-body"><div class="acc-inner"><strong>✅ 不算。</strong>项目可以暂停、归档或转向。每一次尝试都是学习，停滞 ≠ 失败。</div></div>
+        </div>
+      </div>
+      <p style="text-align:center;margin-top:16px"><a href="FAQ.html" style="font-weight:600;font-size:.92rem">查看全部问题 →</a></p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p><strong>Innovation Playbook</strong> · GCR Garage Innovation</p>
+      <p style="margin-top:6px">💡 不要等"准备好"——现在就开始</p>
+    </footer>
+
+  </main>
+</div>
+
+<!-- Mobile toggle -->
+<button class="mob-toggle" id="mob-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
+
+<script>
+function toggleAcc(btn){
+  const item=btn.closest('.acc-item');
+  document.querySelectorAll('.acc-item').forEach(i=>{if(i!==item)i.classList.remove('open')});
+  item.classList.toggle('open');
+}
+
+// Scroll-aware sidebar
+const secs=document.querySelectorAll('section[id]');
+const navs=document.querySelectorAll('.side-link[href^="#"]');
+window.addEventListener('scroll',()=>{
+  let cur='welcome';
+  secs.forEach(s=>{if(scrollY>=s.offsetTop-130)cur=s.id});
+  navs.forEach(n=>n.classList.toggle('active',n.getAttribute('href')==='#'+cur));
+},{passive:true});
+
+// Fade-in
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v')}),{threshold:.08});
+document.querySelectorAll('.fi').forEach(el=>io.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});history.replaceState(null,'',a.getAttribute('href'))}
+  });
+});
+
+// Mobile sidebar close on click
+document.querySelectorAll('.side-link').forEach(l=>l.addEventListener('click',()=>document.getElementById('sidebar').classList.remove('open')));
+</script>
 </body>
 </html>
