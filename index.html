@@ -3,31 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Innovation Playbook</title>
+  <title>Innovation Playbook — GCR Garage Innovation</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
   <style>
     /* ===== Variables — Fluent Design ===== */
     :root {
-      --c-bg: #f5f5f5;
+      --c-bg: #f8f9fa;
       --c-surface: #ffffff;
-      --c-border: #e0e0e0;
-      --c-text: #242424;
-      --c-text-secondary: #616161;
+      --c-border: #e8e8e8;
+      --c-text: #1a1a1a;
+      --c-text-secondary: #555;
       --c-primary: #0078d4;
       --c-primary-hover: #106ebe;
-      --c-primary-bg: #deecf9;
+      --c-primary-bg: #e8f4fd;
       --c-success: #107c10;
       --c-success-bg: #dff6dd;
       --c-warning: #ca5010;
       --c-warning-bg: #fff4ce;
       --c-gradient-start: #0078d4;
-      --c-gradient-end: #005a9e;
-      --radius: 4px;
+      --c-gradient-end: #004578;
+      --radius: 6px;
       --radius-lg: 12px;
-      --shadow: 0 2px 4px rgba(0,0,0,.04), 0 0 2px rgba(0,0,0,.06);
-      --shadow-lg: 0 8px 16px rgba(0,0,0,.08), 0 0 2px rgba(0,0,0,.06);
-      --shadow-hover: 0 4px 12px rgba(0,120,212,.15);
-      --header-height: 52px;
+      --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,.08);
+      --shadow-hover: 0 8px 24px rgba(0,120,212,.18);
+      --header-height: 56px;
       --transition: .2s ease;
       --sidebar-width: 240px;
     }
@@ -270,7 +270,45 @@
       .hero-subtitle { font-size: 1rem; }
       .card-grid { grid-template-columns: 1fr; }
       .role-grid { grid-template-columns: repeat(2, 1fr); }
+      .step { gap: 14px; }
+      .lifecycle-track { flex-direction: column; }
+      .lifecycle-connector { width: 2px; height: 24px; }
     }
+
+    /* ===== Lifecycle Visual ===== */
+    .lifecycle-track {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; flex-wrap: wrap; margin: 8px 0 16px;
+    }
+    .lifecycle-node {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 16px 12px; min-width: 120px; text-align: center;
+    }
+    .lifecycle-dot {
+      width: 52px; height: 52px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,.1);
+    }
+    .lifecycle-label { font-weight: 600; font-size: .9rem; }
+    .lifecycle-desc { font-size: .78rem; color: var(--c-text-secondary); margin-top: 2px; }
+    .lifecycle-connector {
+      width: 40px; height: 3px; border-radius: 2px;
+      background: linear-gradient(90deg, var(--c-border), var(--c-primary));
+    }
+
+    /* ===== Animated Entry ===== */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== Stat Bar ===== */
+    .stat-bar {
+      display: flex; justify-content: center; gap: 48px;
+      padding: 20px 0; margin: 0 0 20px;
+    }
+    .stat-item { text-align: center; }
+    .stat-number { font-size: 1.8rem; font-weight: 700; color: var(--c-primary); }
+    .stat-label { font-size: .82rem; color: var(--c-text-secondary); margin-top: 2px; }
   </style>
 </head>
 <body>
@@ -283,19 +321,19 @@
     </div>
     <div class="header-right">
       <a class="header-link" href="https://github.com/gcr-garage-innovation" target="_blank">🏢 Organization</a>
-      <a class="header-link" href="https://github.com/gcr-garage-innovation/innovation-playbook" target="_blank">📦 GitHub Repo</a>
+      <a class="header-link" href="https://github.com/gcr-garage-innovation/innovation-playbook" target="_blank">📦 Repo</a>
     </div>
   </header>
 
   <div class="app-container">
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
-      <h3>快速开始</h3>
+      <h3>开始</h3>
       <ul class="nav-list">
         <li><a class="nav-item active" href="#welcome"><span class="nav-icon">🏠</span> 首页</a></li>
         <li><a class="nav-item" href="#quickstart"><span class="nav-icon">⚡</span> 快速开始</a></li>
       </ul>
-      <h3>使用指南</h3>
+      <h3>指南</h3>
       <ul class="nav-list">
         <li><a class="nav-item" href="GET_STARTED.html"><span class="nav-icon">🎯</span> 新手入门</a></li>
         <li><a class="nav-item" href="CREATE_PROJECT.html"><span class="nav-icon">🛠️</span> 创建项目</a></li>
@@ -317,27 +355,33 @@
         <div class="hero-icon">🚀</div>
         <h1>Innovation Playbook</h1>
         <p class="hero-subtitle">
-          从 0 开始参与创新项目的完整指南。<br>
-          无论你是否有技术背景，都能按步骤轻松参与。
+          从零开始参与创新项目的完整指南<br>
+          无论你是否有技术背景，都能按步骤轻松参与
         </p>
-        <a class="hero-cta" href="GET_STARTED.html">
-          ⚡ 立即开始
-        </a>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <a class="hero-cta" href="#quickstart">⚡ 立即开始</a>
+          <a class="hero-cta" href="#guides" style="background:transparent;color:var(--c-primary);border:2px solid var(--c-primary);box-shadow:none;">📚 浏览指南</a>
+        </div>
+        <div class="stat-bar">
+          <div class="stat-item"><div class="stat-number">3</div><div class="stat-label">步开始创新</div></div>
+          <div class="stat-item"><div class="stat-number">6</div><div class="stat-label">份详细指南</div></div>
+          <div class="stat-item"><div class="stat-number">0</div><div class="stat-label">技术门槛</div></div>
+        </div>
       </section>
 
       <!-- Quick Start Steps -->
-      <section class="section" id="quickstart">
+      <section class="section fade-in" id="quickstart">
         <div class="section-header">
           <span class="section-icon">⚡</span>
           <span class="section-title">三步开始创新</span>
-          <span class="section-desc">从想法到项目，只需三步</span>
+          <span class="section-desc">从想法到项目</span>
         </div>
         <div class="steps">
           <div class="step">
             <div class="step-number">1</div>
             <div class="step-content">
               <div class="step-title">加入创新组织</div>
-              <div class="step-desc">联系管理员加入 GitHub Organization，获得创建项目的权限。</div>
+              <div class="step-desc">联系管理员加入 GitHub Organization 和 incubator-creators Team，获得创建项目的权限。</div>
               <a class="step-link" href="GET_STARTED.html">查看详细步骤 →</a>
             </div>
           </div>
@@ -345,7 +389,7 @@
             <div class="step-number">2</div>
             <div class="step-content">
               <div class="step-title">使用模板创建项目</div>
-              <div class="step-desc">用 template-innovation-repo 模板一键创建项目，填写 README 中的问题定义。</div>
+              <div class="step-desc">用 <code>template-innovation-repo</code> 模板一键创建项目 Repository，填写 README 中的问题定义。</div>
               <a class="step-link" href="CREATE_PROJECT.html">创建项目指南 →</a>
             </div>
           </div>
@@ -353,7 +397,7 @@
             <div class="step-number">3</div>
             <div class="step-content">
               <div class="step-title">开始尝试！</div>
-              <div class="step-desc">不需要完美，快速构建 PoC / Demo / Agent。完成 > 完美。</div>
+              <div class="step-desc">不需要完美方案，快速构建 PoC / Demo / Agent。记住：<strong>完成 > 完美</strong>。</div>
               <a class="step-link" href="TEMPLATE_GUIDE.html">模板使用指南 →</a>
             </div>
           </div>
@@ -361,7 +405,7 @@
       </section>
 
       <!-- Guide Cards -->
-      <section class="section" id="guides">
+      <section class="section fade-in" id="guides">
         <div class="section-header">
           <span class="section-icon">📚</span>
           <span class="section-title">使用指南</span>
@@ -371,7 +415,7 @@
           <a class="card" href="GET_STARTED.html">
             <div class="card-icon">🎯</div>
             <div class="card-title">快速开始</div>
-            <div class="card-desc">第一次接触创新项目？从这里开始，了解如何参与、如何迈出第一步。</div>
+            <div class="card-desc">第一次接触创新项目？从这里开始，了解如何参与和迈出第一步。</div>
             <span class="card-tag tag-beginner">新手推荐</span>
           </a>
           <a class="card" href="CREATE_PROJECT.html">
@@ -383,102 +427,103 @@
           <a class="card" href="TEMPLATE_GUIDE.html">
             <div class="card-icon">📋</div>
             <div class="card-title">模板指南</div>
-            <div class="card-desc">了解如何正确使用创新项目模板，快速、规范地启动项目。</div>
+            <div class="card-desc">了解如何正确使用创新项目模板，快速规范地启动项目。</div>
             <span class="card-tag tag-guide">使用指南</span>
           </a>
           <a class="card" href="FAQ.html">
             <div class="card-icon">❓</div>
             <div class="card-title">常见问题</div>
-            <div class="card-desc">新手在使用 GitHub 和创新项目过程中的常见问题与解答。</div>
+            <div class="card-desc">新手使用 GitHub 和创新项目过程中的常见问题与解答。</div>
             <span class="card-tag tag-guide">使用指南</span>
           </a>
           <a class="card" href="GOVERNANCE.html">
             <div class="card-icon">🏛️</div>
             <div class="card-title">治理与规则</div>
-            <div class="card-desc">创新项目的规则、责任边界，适合管理者和组织负责人阅读。</div>
+            <div class="card-desc">创新项目的规则、责任和边界，适合管理者和组织负责人。</div>
             <span class="card-tag tag-advanced">进阶</span>
           </a>
           <a class="card" href="#lifecycle">
             <div class="card-icon">🔄</div>
             <div class="card-title">项目生命周期</div>
-            <div class="card-desc">项目从 Idea → Prototype → Active → Graduation 的完整流程。</div>
+            <div class="card-desc">从 Idea → Prototype → Active → Graduation 的完整流程。</div>
             <span class="card-tag tag-advanced">进阶</span>
           </a>
         </div>
       </section>
 
       <!-- Lifecycle -->
-      <section class="section" id="lifecycle">
+      <section class="section fade-in" id="lifecycle">
         <div class="section-header">
           <span class="section-icon">🔄</span>
           <span class="section-title">项目生命周期</span>
           <span class="section-desc">从想法到产品的旅程</span>
         </div>
-        <div class="steps">
-          <div class="step">
-            <div class="step-number" style="background:#ca5010;">💡</div>
-            <div class="step-content">
-              <div class="step-title">Idea（想法）</div>
-              <div class="step-desc">一句话描述你想解决的问题。不需要完整方案，只需要"我想试试..."</div>
-            </div>
+        <div class="lifecycle-track">
+          <div class="lifecycle-node">
+            <div class="lifecycle-dot" style="background:#fff4ce;color:#ca5010;">💡</div>
+            <div class="lifecycle-label">Idea</div>
+            <div class="lifecycle-desc">一句话想法</div>
           </div>
-          <div class="step">
-            <div class="step-number" style="background:#0078d4;">🧪</div>
-            <div class="step-content">
-              <div class="step-title">Prototype（原型）</div>
-              <div class="step-desc">快速构建 PoC / Demo，验证想法是否可行。用最小成本学到最多。</div>
-            </div>
+          <div class="lifecycle-connector"></div>
+          <div class="lifecycle-node">
+            <div class="lifecycle-dot" style="background:#e8f4fd;color:#0078d4;">🧪</div>
+            <div class="lifecycle-label">Prototype</div>
+            <div class="lifecycle-desc">快速验证</div>
           </div>
-          <div class="step">
-            <div class="step-number" style="background:#107c10;">🚀</div>
-            <div class="step-content">
-              <div class="step-title">Active（活跃）</div>
-              <div class="step-desc">项目持续迭代，有稳定的使用场景和小范围用户。</div>
-            </div>
+          <div class="lifecycle-connector"></div>
+          <div class="lifecycle-node">
+            <div class="lifecycle-dot" style="background:#dff6dd;color:#107c10;">🚀</div>
+            <div class="lifecycle-label">Active</div>
+            <div class="lifecycle-desc">持续迭代</div>
           </div>
-          <div class="step">
-            <div class="step-number" style="background:#5c2d91;">🎓</div>
-            <div class="step-content">
-              <div class="step-title">Graduation（毕业）</div>
-              <div class="step-desc">项目具备进入正式产品或业务体系的条件，迁移到正式团队。</div>
-            </div>
+          <div class="lifecycle-connector"></div>
+          <div class="lifecycle-node">
+            <div class="lifecycle-dot" style="background:#ede1f5;color:#5c2d91;">🎓</div>
+            <div class="lifecycle-label">Graduation</div>
+            <div class="lifecycle-desc">进入正式产品</div>
           </div>
+        </div>
+        <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius-lg);padding:20px;margin-top:8px;">
+          <p style="margin-bottom:10px;"><strong>💡 Idea →</strong> 一句话描述你想解决的问题，不需要完整方案。</p>
+          <p style="margin-bottom:10px;"><strong>🧪 Prototype →</strong> 快速构建 PoC / Demo，用最小成本学到最多。</p>
+          <p style="margin-bottom:10px;"><strong>🚀 Active →</strong> 项目持续迭代，有稳定使用场景和小范围用户。</p>
+          <p><strong>🎓 Graduation →</strong> 项目成熟，迁移到正式团队或产品线。</p>
         </div>
       </section>
 
       <!-- Who Are You -->
-      <section class="section">
+      <section class="section fade-in">
         <div class="section-header">
           <span class="section-icon">👤</span>
           <span class="section-title">你是谁？</span>
-          <span class="section-desc">选择最适合你的入口</span>
+          <span class="section-desc">找到最适合你的入口</span>
         </div>
         <div class="role-grid">
           <a class="role-card" href="GET_STARTED.html" style="text-decoration:none;color:inherit;">
             <div class="role-icon">🌱</div>
             <div class="role-name">第一次参与创新</div>
-            <div class="role-desc">从 GET_STARTED 开始</div>
+            <div class="role-desc">从新手入门开始 →</div>
           </a>
           <a class="role-card" href="CREATE_PROJECT.html" style="text-decoration:none;color:inherit;">
             <div class="role-icon">💡</div>
-            <div class="role-name">有想法，想创建项目</div>
-            <div class="role-desc">去 CREATE_PROJECT</div>
+            <div class="role-name">有想法想创建项目</div>
+            <div class="role-desc">去创建项目 →</div>
           </a>
           <a class="role-card" href="TEMPLATE_GUIDE.html" style="text-decoration:none;color:inherit;">
             <div class="role-icon">📦</div>
             <div class="role-name">不确定模板怎么用</div>
-            <div class="role-desc">看 TEMPLATE_GUIDE</div>
+            <div class="role-desc">看模板指南 →</div>
           </a>
           <a class="role-card" href="GOVERNANCE.html" style="text-decoration:none;color:inherit;">
             <div class="role-icon">🧭</div>
             <div class="role-name">管理者 / 负责人</div>
-            <div class="role-desc">看 GOVERNANCE</div>
+            <div class="role-desc">看治理与规则 →</div>
           </a>
         </div>
       </section>
 
       <!-- FAQ -->
-      <section class="section" id="faq">
+      <section class="section fade-in" id="faq">
         <div class="section-header">
           <span class="section-icon">❓</span>
           <span class="section-title">常见问题</span>
@@ -489,44 +534,36 @@
               <span>🤔 我完全不会 GitHub，可以参与创新项目吗？</span>
               <span class="accordion-arrow">▼</span>
             </button>
-            <div class="accordion-body">
-              <div class="accordion-body-inner">
-                <strong>✅ 可以！</strong> 你不需要会写代码、不需要成为程序员。你只需要会阅读文档、会点击按钮、愿意尝试一个想法。本 Playbook 的设计目标就是让你在"使用中学会 GitHub"。
-              </div>
-            </div>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <strong>✅ 可以！</strong> 你不需要会写代码。你只需要会阅读文档、会点击按钮、愿意尝试一个想法。本 Playbook 的设计目标是让你在"使用中学会 GitHub"。
+            </div></div>
           </div>
           <div class="accordion-item">
             <button class="accordion-trigger" onclick="toggleFaq(this)">
-              <span>🤔 我只有一个不成熟的想法，可以创建项目吗？</span>
+              <span>🤔 只有一个不成熟的想法，可以创建项目吗？</span>
               <span class="accordion-arrow">▼</span>
             </button>
-            <div class="accordion-body">
-              <div class="accordion-body-inner">
-                <strong>✅ 非常鼓励！</strong> 创新项目的正确顺序是：想法 → 尝试 → 学习 → 再调整。"我想试试用 AI 自动生成会议总结" 这样一句话就足够了。完成 > 完美。
-              </div>
-            </div>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <strong>✅ 非常鼓励！</strong> 创新的正确顺序是：想法 → 尝试 → 学习 → 再调整。"我想试试用 AI 自动生成会议总结"这样一句话就足够了。
+            </div></div>
           </div>
           <div class="accordion-item">
             <button class="accordion-trigger" onclick="toggleFaq(this)">
-              <span>🤔 使用项目模板会不会限制我的想法？</span>
+              <span>🤔 使用项目模板会限制我的想法吗？</span>
               <span class="accordion-arrow">▼</span>
             </button>
-            <div class="accordion-body">
-              <div class="accordion-body-inner">
-                <strong>❌ 不会。</strong> 模板只是给你一个起点，你可以删除不需要的部分、增加自己的内容、随时调整方向。模板是工具，不是规则。
-              </div>
-            </div>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <strong>❌ 不会。</strong> 模板只是给你一个起点。你可以删除不需要的部分、增加自己的内容、随时调整方向。模板是工具，不是规则。
+            </div></div>
           </div>
           <div class="accordion-item">
             <button class="accordion-trigger" onclick="toggleFaq(this)">
-              <span>🤔 如果项目停滞了怎么办？</span>
+              <span>🤔 项目停滞了怎么办？</span>
               <span class="accordion-arrow">▼</span>
             </button>
-            <div class="accordion-body">
-              <div class="accordion-body-inner">
-                <strong>✅ 没关系。</strong> 创新项目可以暂停、归档、作为学习案例保留。停滞 ≠ 失败。创新的价值体现在学习速度、跨团队协作和新机会的发现。
-              </div>
-            </div>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <strong>✅ 没关系。</strong> 创新项目可以暂停、归档、作为学习案例保留。停滞 ≠ 失败。创新的价值体现在学习速度和新机会的发现。
+            </div></div>
           </div>
         </div>
         <p style="margin-top:16px;text-align:center;">
@@ -536,8 +573,8 @@
 
       <!-- Footer -->
       <footer class="footer">
-        <p>📘 Innovation Playbook · GCR Garage Innovation</p>
-        <p style="margin-top:4px;">不要等"准备好"，现在就开始。 🚀</p>
+        <p><strong>📘 Innovation Playbook</strong> · GCR Garage Innovation</p>
+        <p style="margin-top:6px;font-style:italic;">不要等"准备好"，现在就开始 🚀</p>
       </footer>
 
     </main>
@@ -550,33 +587,52 @@
     // FAQ accordion
     function toggleFaq(trigger) {
       const item = trigger.closest('.accordion-item');
+      // Close others
+      document.querySelectorAll('.accordion-item').forEach(i => {
+        if (i !== item) i.classList.remove('open');
+      });
       item.classList.toggle('open');
     }
 
-    // Sidebar active state on scroll
-    const sections = document.querySelectorAll('.section[id], .hero[id]');
+    // Scroll-aware sidebar active state
+    const sections = document.querySelectorAll('section[id]');
     const navItems = document.querySelectorAll('.sidebar .nav-item[href^="#"]');
 
     function updateActiveNav() {
-      let current = '';
+      let current = 'welcome';
       sections.forEach(sec => {
-        if (window.scrollY >= sec.offsetTop - 100) {
-          current = sec.id;
-        }
+        if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
       });
       navItems.forEach(item => {
-        item.classList.remove('active');
-        if (item.getAttribute('href') === '#' + current) {
-          item.classList.add('active');
-        }
+        item.classList.toggle('active', item.getAttribute('href') === '#' + current);
       });
     }
-    window.addEventListener('scroll', updateActiveNav);
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
 
-    // Close mobile sidebar on nav click
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Close mobile sidebar on link click
     document.querySelectorAll('.nav-item').forEach(item => {
-      item.addEventListener('click', () => {
-        document.getElementById('sidebar').classList.remove('open');
+      item.addEventListener('click', () => document.getElementById('sidebar').classList.remove('open'));
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          history.replaceState(null, '', a.getAttribute('href'));
+        }
       });
     });
   </script>
