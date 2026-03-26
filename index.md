@@ -1,5 +1,5 @@
 ---
-title: Innovation Playbook
+Title: Innovation Playbook
 ---
 
 # 🚀 Innovation Playbook
