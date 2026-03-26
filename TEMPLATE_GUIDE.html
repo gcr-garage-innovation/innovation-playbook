@@ -1,0 +1,275 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>模板指南 — Innovation Playbook</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>">
+  <style>
+    :root{--c-bg:#f0f2f5;--c-surface:#fff;--c-border:#e4e7ec;--c-text:#1a1a2e;--c-sub:#5f6b7a;--c-primary:#0078d4;--c-primary-dark:#005a9e;--c-primary-light:#e8f4fd;--c-success:#0e7a0d;--c-success-bg:#dff6dd;--c-warning:#c4820e;--c-warning-bg:#fff4ce;--c-danger:#c42b1c;--c-danger-bg:#fde7e9;--radius:8px;--radius-lg:14px;--shadow:0 2px 8px rgba(0,0,0,.06);--shadow-hover:0 8px 24px rgba(0,120,212,.15);--header-h:56px;--ease:cubic-bezier(.4,0,.2,1)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:16px;scroll-behavior:smooth}
+    body{font-family:"Segoe UI","Noto Sans SC",-apple-system,sans-serif;background:var(--c-bg);color:var(--c-text);line-height:1.7}
+    a{color:var(--c-primary);text-decoration:none}
+    a:hover{text-decoration:underline}
+    code{background:#eef1f6;padding:2px 8px;border-radius:4px;font-size:.88em;font-family:"Cascadia Code",Consolas,monospace}
+
+    /* Header */
+    .header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--header-h);display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:var(--c-primary-dark);color:#fff}
+    .header-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:.95rem}
+    .header-brand a{color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px}
+    .header-nav{display:flex;gap:6px}
+    .header-nav a{color:rgba(255,255,255,.75);font-size:.82rem;padding:5px 12px;border-radius:6px;transition:background .15s}
+    .header-nav a:hover{background:rgba(255,255,255,.12);color:#fff;text-decoration:none}
+
+    /* Layout */
+    .page{max-width:780px;margin:0 auto;padding:calc(var(--header-h) + 36px) 24px 60px}
+
+    /* Breadcrumb */
+    .breadcrumb{font-size:.82rem;color:var(--c-sub);margin-bottom:24px}
+    .breadcrumb a{color:var(--c-primary)}
+
+    /* Hero */
+    .page-hero{margin-bottom:36px}
+    .page-hero h1{font-size:1.8rem;font-weight:800;margin-bottom:10px}
+    .page-hero .subtitle{color:var(--c-sub);font-size:1.02rem;line-height:1.7}
+    .meta-bar{display:flex;gap:16px;margin-top:14px;flex-wrap:wrap}
+    .meta-tag{display:inline-flex;align-items:center;gap:5px;font-size:.78rem;padding:4px 12px;border-radius:16px;font-weight:600}
+    .meta-tag.who{background:var(--c-primary-light);color:var(--c-primary)}
+    .meta-tag.time{background:var(--c-success-bg);color:var(--c-success)}
+
+    /* Section */
+    .sec{background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius-lg);padding:28px 32px;margin-bottom:20px}
+    .sec-title{font-size:1.15rem;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .sec p,.sec li{font-size:.92rem;line-height:1.8}
+    .sec ul,.sec ol{margin:8px 0 12px 20px}
+    .sec li{margin-bottom:5px}
+
+    /* Visual step cards */
+    .step-cards{display:flex;flex-direction:column;gap:16px}
+    .step-card{display:flex;gap:18px;background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius-lg);padding:22px 24px;transition:border-color .2s,box-shadow .2s}
+    .step-card:hover{border-color:var(--c-primary);box-shadow:var(--shadow-hover)}
+    .step-num{flex-shrink:0;width:44px;height:44px;border-radius:50%;background:var(--c-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;box-shadow:0 2px 8px rgba(0,120,212,.2)}
+    .step-body{flex:1}
+    .step-body h3{font-size:1rem;font-weight:700;margin-bottom:4px}
+    .step-body p{color:var(--c-sub);font-size:.9rem}
+
+    /* What's Inside */
+    .tmpl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-top:14px}
+    .tmpl-item{text-align:center;padding:18px 12px;background:var(--c-bg);border-radius:var(--radius);border:1px solid var(--c-border)}
+    .tmpl-item .ico{font-size:1.6rem;margin-bottom:6px}
+    .tmpl-item .name{font-weight:600;font-size:.88rem}
+    .tmpl-item .desc{font-size:.78rem;color:var(--c-sub);margin-top:2px}
+
+    /* Do / Don't */
+    .do-dont{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+    .do-col,.dont-col{padding:18px 20px;border-radius:var(--radius);font-size:.88rem}
+    .do-col{background:var(--c-success-bg);border-left:4px solid var(--c-success)}
+    .dont-col{background:var(--c-danger-bg);border-left:4px solid var(--c-danger)}
+    .do-col h4,.dont-col h4{margin-bottom:8px;font-size:.92rem}
+    .do-col li,.dont-col li{margin-bottom:4px;line-height:1.6}
+
+    /* Tip box */
+    .tip{display:flex;gap:10px;padding:14px 18px;border-radius:var(--radius);margin:14px 0;font-size:.88rem;line-height:1.7}
+    .tip.info{background:var(--c-primary-light);border-left:4px solid var(--c-primary)}
+    .tip.warn{background:var(--c-warning-bg);border-left:4px solid var(--c-warning)}
+    .tip-icon{flex-shrink:0;font-size:1.1rem}
+
+    /* Checklist */
+    .checklist{list-style:none;margin:12px 0}
+    .checklist li{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.9rem}
+    .checklist li::before{content:'☐';font-size:1rem;color:var(--c-primary)}
+
+    /* Footer nav */
+    .foot-nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-top:1px solid var(--c-border);margin-top:32px;font-size:.9rem;flex-wrap:wrap;gap:12px}
+    .foot-nav a{display:inline-flex;align-items:center;gap:4px;font-weight:600}
+
+    /* Fade */
+    .fi{opacity:0;transform:translateY(20px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+    .fi.v{opacity:1;transform:translateY(0)}
+
+    @media(max-width:640px){
+      .do-dont{grid-template-columns:1fr}
+      .tmpl-grid{grid-template-columns:repeat(2,1fr)}
+      .step-card{flex-direction:column;gap:10px}
+      .page{padding:calc(var(--header-h) + 20px) 16px 40px}
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-brand"><a href="index.html">🚀 <span>Innovation Playbook</span></a></div>
+  <div class="header-nav">
+    <a href="GET_STARTED.html">🎯 新手入门</a>
+    <a href="CREATE_PROJECT.html">🛠️ 创建项目</a>
+    <a href="TEMPLATE_GUIDE.html" class="active">📋 模板指南</a>
+    <a href="LIFECYCLE.html">🔄 生命周期</a>
+    <a href="FAQ.html">❓ FAQ</a>
+    <a href="GOVERNANCE.html">📜 治理</a>
+  </div>
+</header>
+
+<div class="page">
+
+  <div class="breadcrumb">
+    <a href="index.html">首页</a> / <strong>模板指南</strong>
+  </div>
+
+  <!-- Hero -->
+  <div class="page-hero">
+    <h1>📋 如何使用创新项目模板</h1>
+    <p class="subtitle">不需要从零开始——用模板一键启动你的创新项目，跟着 4 步完成初始化。</p>
+    <div class="meta-bar">
+      <span class="meta-tag who">🎯 适合：第一次用模板的人</span>
+      <span class="meta-tag time">⏱️ 阅读时间：5 分钟</span>
+    </div>
+  </div>
+
+  <!-- What is Template -->
+  <div class="sec fi">
+    <div class="sec-title">🤔 什么是创新项目模板？</div>
+    <p>模板（Template Repository）是一个<strong>已经准备好的项目骨架</strong>，帮助你跳过繁琐的初始化工作，直接进入核心内容。</p>
+    <div class="tmpl-grid">
+      <div class="tmpl-item"><div class="ico">📁</div><div class="name">标准结构</div><div class="desc">推荐的目录和文件</div></div>
+      <div class="tmpl-item"><div class="ico">📝</div><div class="name">README 模板</div><div class="desc">引导你思考问题</div></div>
+      <div class="tmpl-item"><div class="ico">📌</div><div class="name">最佳实践</div><div class="desc">内置说明和示例</div></div>
+      <div class="tmpl-item"><div class="ico">🚀</div><div class="name">即开即用</div><div class="desc">一键创建，不需配置</div></div>
+    </div>
+  </div>
+
+  <!-- When to Use -->
+  <div class="sec fi">
+    <div class="sec-title">✅ 什么时候应该使用模板？</div>
+    <ul>
+      <li><strong>第一次创建</strong>创新项目</li>
+      <li>参加 <strong>Hackathon / Garage</strong> 活动</li>
+      <li>想快速验证一个想法（<strong>PoC</strong>）</li>
+      <li>不确定项目应该包含哪些文件</li>
+    </ul>
+    <div class="tip info">
+      <span class="tip-icon">💡</span>
+      <span>简单说：只要你不确定"项目该怎么组织"，就用模板。它是起点，不是限制。</span>
+    </div>
+  </div>
+
+  <!-- 4 Steps -->
+  <div class="sec fi">
+    <div class="sec-title">🚀 4 步完成模板初始化</div>
+
+    <div class="step-cards">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>从模板创建新项目</h3>
+          <p>打开创新 Organization → 找到 <code>template-innovation-repo</code> → 点击 <strong>Use this template</strong> → 填写项目名称 → <strong>Create repository</strong></p>
+          <div class="tip info" style="margin-top:10px">
+            <span class="tip-icon">✅</span>
+            <span>到这里，你已经拥有了一个完整的项目 Repo！</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>填写 README（最重要）</h3>
+          <p>打开 <code>README.md</code>，你会看到几个占位问题。现在要做的不是写代码，而是<strong>回答这些问题</strong>：</p>
+          <ul style="margin-top:8px">
+            <li><strong>Problem</strong> — 你想解决什么问题？（2-3 句话）</li>
+            <li><strong>Idea</strong> — 你的初步思路是什么？（不需要完美）</li>
+            <li><strong>Status</strong> — 当前阶段：<code>idea</code> / <code>prototype</code> / <code>active</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>保持模板结构（新手建议）</h3>
+          <p>模板里的目录和文件是为后续扩展准备的。新手阶段请：</p>
+          <ul style="margin-top:6px">
+            <li>✅ 不删除已有文件</li>
+            <li>✅ 不随意改目录名</li>
+            <li>✅ 先把 README 写清楚再动其他</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>开始自由扩展</h3>
+          <p>README 完成后，你可以按需添加内容：</p>
+          <ul style="margin-top:6px">
+            <li>📝 <code>notes.md</code> — 记录想法和灵感</li>
+            <li>🧪 <code>demo/</code> — 放置 Demo 代码或截图</li>
+            <li>📖 <code>docs/</code> — 设计说明和架构文档</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Do & Don't -->
+  <div class="sec fi">
+    <div class="sec-title">⚡ 做与不做</div>
+    <div class="do-dont">
+      <div class="do-col">
+        <h4>✅ 推荐</h4>
+        <ul>
+          <li>先写 README 再写代码</li>
+          <li>尽早 Commit，不等完美</li>
+          <li>邀请同事协作和反馈</li>
+          <li>记录失败和学到的东西</li>
+        </ul>
+      </div>
+      <div class="dont-col">
+        <h4>❌ 避免</h4>
+        <ul>
+          <li>跳过 README 直接写代码</li>
+          <li>担心"不够成熟"不敢提交</li>
+          <li>把模板当成最终成品</li>
+          <li>一个人闷头做不交流</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checklist -->
+  <div class="sec fi">
+    <div class="sec-title">🎉 完成检查</div>
+    <p>如果你已经做到以下几点，说明你<strong>正确使用了模板</strong>：</p>
+    <ul class="checklist">
+      <li>使用模板创建了项目 Repo</li>
+      <li>填写了 README 中的 Problem 和 Idea</li>
+      <li>标记了当前项目阶段（Status）</li>
+      <li>做了第一次 Commit</li>
+    </ul>
+    <div class="tip info">
+      <span class="tip-icon">🎯</span>
+      <span>完成以上步骤后，项目成熟可进入毕业流程，详见 <a href="LIFECYCLE.html">项目生命周期</a>。</span>
+    </div>
+  </div>
+
+  <!-- Footer Nav -->
+  <div class="foot-nav" style="flex-wrap:wrap;justify-content:center;gap:16px">
+    <a href="index.html">🏠 返回首页</a>
+    <a href="GET_STARTED.html">🎯 新手入门</a>
+    <a href="CREATE_PROJECT.html">← 创建项目</a>
+    <a href="LIFECYCLE.html">🔄 项目生命周期 →</a>
+    <a href="FAQ.html">❓ FAQ</a>
+    <a href="GOVERNANCE.html">📜 治理与规则</a>
+  </div>
+
+</div>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v')}),{threshold:.08});
+document.querySelectorAll('.fi').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

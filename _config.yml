@@ -3,12 +3,14 @@ description: 帮助每一位员工从零开始发起创新项目
 baseurl: /innovation-playbook
 url: https://gcr-garage-innovation.github.io
 
+plugins: []
+
 defaults:
   - scope:
       path: ""
-      type: "pages"
     values:
       layout: "page"
 
 exclude:
   - README.md
+  - docs/
