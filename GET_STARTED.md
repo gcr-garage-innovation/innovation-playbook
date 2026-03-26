@@ -1,72 +1,72 @@
 ---
-title: 快速开始创新项目
+title: 新手入门 — 准备工作
 layout: page
 nav_id: get-started
 ---
 
-# 🎯 快速开始创新项目
+# 🎯 新手入门：准备工作
 
 > **适合谁：** 第一次接触创新项目的员工  
-> **本页面解决什么：** 如何从 0 开始参与创新  
-> **阅读后你能做什么：** 知道第一步该做什么，不再迷茫
+> **本页面解决什么：** 确认你已经具备参与创新的条件  
+> **阅读后你能做什么：** 完成准备工作，直接去创建项目
 
-你不需要是程序员，不需要有完整方案，甚至不需要之前用过 GitHub。
-跟着下面三步走，**10 分钟内就能迈出创新第一步**。
-
----
-
-## 🚀 第一步：加入创新 GitHub 组织
-
-在创建项目之前，你需要先加入组织并获得权限：
-
-1. **联系你的管理员或创新负责人**，请他们将你加入 `gcr-garage-innovation` Organization
-2. 确认你已被加入 **`incubator-creators`** Team（这个 Team 赋予你创建项目的权限）
-3. 登录 GitHub，打开 [Organization 首页](https://github.com/gcr-garage-innovation)，确认能看到组织页面
-
-> 💡 如果你还没有 GitHub 账号，可以在 [github.com](https://github.com) 免费注册一个。
-
-✅ 完成后，你已经拥有了创建创新项目的全部权限。
+本页面只做一件事：**确保你准备好了**。
+准备好之后，你可以直接去 [创建你的第一个项目](CREATE_PROJECT.html)。
 
 ---
 
-## 🛠️ 第二步：使用模板创建你的第一个项目
+## 📌 什么是 Innovation Playbook？
 
-1. 进入 Organization 首页，点击 **New repository**
-2. 选择模板：`template-innovation-repo`
-3. 填写项目名称和一句话描述
-4. 点击 **Create repository**
+Innovation Playbook 是一个**员工创新指南网站**，帮助你：
 
-创建成功后，打开 `README.md`，填写以下关键信息：
+- 在一个安全的空间里探索和尝试新想法
+- 使用 GitHub 记录、协作和展示你的创新项目
+- 从想法（Idea）走到原型（Prototype），甚至毕业（Graduation）进入正式产品
 
-- **Problem** — 你想解决什么问题？（2-3 句话即可）
-- **Idea** — 你打算怎么做？（初步思路，不需要完美）
-- **Status** — 当前阶段选择 `idea`
-
-> 💡 "我想试试用 AI 自动生成会议总结" —— 这就足够了
-
-✅ 到这里，你已经拥有了一个属于你的创新项目！
+> 💡 **你不需要是程序员。** 本指南的设计目标是让你在"使用中学会"，而不是先学习再开始。
 
 ---
 
-## 🧪 第三步：开始尝试（不要等完美）
+## ✅ 准备清单
 
-现在你可以自由探索：
+在创建项目之前，请完成以下 3 项准备：
 
-- ✏️ 写第一版代码或脚本
-- 🎨 画一个流程图或草图
-- 🤖 用 GitHub Copilot / AI Agent 快速做一个 Demo
-- 📝 把想法、失败和学到的东西都记录下来
+### 1️⃣ 注册 GitHub 账号
 
-> **完成 > 完美。** 创新的正确顺序是：想法 → 尝试 → 学习 → 再调整。
+如果你还没有 GitHub 账号：
+
+1. 打开 [github.com](https://github.com)
+2. 点击 **Sign up**，按提示完成注册
+3. 建议使用公司邮箱
+
+> 已有账号？直接跳到下一步。
 
 ---
 
-## 🎉 恭喜！你已经开始了
+### 2️⃣ 加入创新 GitHub Organization
 
-如果你走到这里，说明你已经：
+1. **联系你的管理员或创新负责人**，提供你的 GitHub 用户名
+2. 管理员会将你加入 `gcr-garage-innovation` Organization
+3. 你会收到一封邀请邮件，点击 **Accept** 接受邀请
 
-- ✅ 加入了创新 GitHub 组织
-- ✅ 创建了你的第一个项目 Repo
-- ✅ 迈出了创新旅程的第一步
+验证方法：打开 [Organization 首页](https://github.com/gcr-garage-innovation)，能看到组织页面就说明已加入。
 
-**欢迎来到创新旅程！** 🚀
+---
+
+### 3️⃣ 确认你在正确的 Team 中
+
+加入 Organization 后，你还需要在 **`incubator-creators`** Team 中，这个 Team 赋予你创建项目 Repo 的权限。
+
+> 💡 如果你不确定自己是否在这个 Team 中，请联系管理员确认。
+
+---
+
+## 🎉 准备完成！
+
+如果你已经：
+
+- ✅ 有 GitHub 账号
+- ✅ 加入了 `gcr-garage-innovation` Organization
+- ✅ 在 `incubator-creators` Team 中
+
+那么你已经准备好了，现在可以去 **[创建你的第一个创新项目 →](CREATE_PROJECT.html)**

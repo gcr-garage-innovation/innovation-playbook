@@ -121,10 +121,10 @@ layout: null
 
   <!-- Hero -->
   <div class="page-hero">
-    <h1>📋 如何使用创新项目模板</h1>
-    <p class="subtitle">不需要从零开始——用模板一键启动你的创新项目，跟着 4 步完成初始化。</p>
+    <h1>📋 模板参考手册</h1>
+    <p class="subtitle">了解创新项目模板包含什么、每个部分的作用，以及如何根据你的需求自定义扩展。</p>
     <div class="meta-bar">
-      <span class="meta-tag who">🎯 适合：第一次用模板的人</span>
+      <span class="meta-tag who">🎯 适合：想深入了解模板结构的人</span>
       <span class="meta-tag time">⏱️ 阅读时间：5 分钟</span>
     </div>
   </div>
@@ -139,78 +139,104 @@ layout: null
       <div class="tmpl-item"><div class="ico">📌</div><div class="name">最佳实践</div><div class="desc">内置说明和示例</div></div>
       <div class="tmpl-item"><div class="ico">🚀</div><div class="name">即开即用</div><div class="desc">一键创建，不需配置</div></div>
     </div>
-  </div>
-
-  <!-- When to Use -->
-  <div class="sec fi">
-    <div class="sec-title">✅ 什么时候应该使用模板？</div>
-    <ul>
-      <li><strong>第一次创建</strong>创新项目</li>
-      <li>参加 <strong>Hackathon / Garage</strong> 活动</li>
-      <li>想快速验证一个想法（<strong>PoC</strong>）</li>
-      <li>不确定项目应该包含哪些文件</li>
-    </ul>
     <div class="tip info">
       <span class="tip-icon">💡</span>
-      <span>简单说：只要你不确定"项目该怎么组织"，就用模板。它是起点，不是限制。</span>
+      <span>想直接创建项目？请前往 <a href="CREATE_PROJECT.html">创建项目教程</a>，那里有完整的操作步骤。本页面重点介绍模板的结构和自定义方法。</span>
     </div>
   </div>
 
-  <!-- 4 Steps -->
+  <!-- Template Structure -->
   <div class="sec fi">
-    <div class="sec-title">🚀 4 步完成模板初始化</div>
+    <div class="sec-title">📂 模板包含哪些文件？</div>
+    <p>使用 <code>template-innovation-repo</code> 创建的项目默认包含以下结构：</p>
 
     <div class="step-cards">
       <div class="step-card">
-        <div class="step-num">1</div>
+        <div class="step-num" style="background:var(--c-primary)">📝</div>
         <div class="step-body">
-          <h3>从模板创建新项目</h3>
-          <p>打开创新 Organization → 找到 <code>template-innovation-repo</code> → 点击 <strong>Use this template</strong> → 填写项目名称 → <strong>Create repository</strong></p>
-          <div class="tip info" style="margin-top:10px">
-            <span class="tip-icon">✅</span>
-            <span>到这里，你已经拥有了一个完整的项目 Repo！</span>
-          </div>
+          <h3>README.md — 项目说明书</h3>
+          <p>这是你的项目最重要的文件。模板已预设了 <strong>Problem</strong>、<strong>Idea</strong>、<strong>Status</strong> 等字段，帮助你结构化地描述项目。</p>
+          <p style="color:var(--c-sub);font-size:.85rem;margin-top:4px">⭐ 任何人访问你的 Repo，第一眼看到的就是这个文件。</p>
         </div>
       </div>
 
       <div class="step-card">
-        <div class="step-num">2</div>
+        <div class="step-num" style="background:#6b7280">📄</div>
         <div class="step-body">
-          <h3>填写 README（最重要）</h3>
-          <p>打开 <code>README.md</code>，你会看到几个占位问题。现在要做的不是写代码，而是<strong>回答这些问题</strong>：</p>
-          <ul style="margin-top:8px">
-            <li><strong>Problem</strong> — 你想解决什么问题？（2-3 句话）</li>
-            <li><strong>Idea</strong> — 你的初步思路是什么？（不需要完美）</li>
-            <li><strong>Status</strong> — 当前阶段：<code>idea</code> / <code>prototype</code> / <code>active</code></li>
-          </ul>
+          <h3>.gitignore — 忽略规则</h3>
+          <p>告诉 Git 哪些文件不需要被跟踪（如临时文件、编译产物、环境变量等）。通常不需要修改。</p>
         </div>
       </div>
 
       <div class="step-card">
-        <div class="step-num">3</div>
+        <div class="step-num" style="background:#6b7280">📜</div>
         <div class="step-body">
-          <h3>保持模板结构（新手建议）</h3>
-          <p>模板里的目录和文件是为后续扩展准备的。新手阶段请：</p>
+          <h3>LICENSE — 开源协议</h3>
+          <p>定义其他人可以如何使用你的代码。模板默认使用 MIT 协议（最宽松的开源协议）。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- README Deep Dive -->
+  <div class="sec fi">
+    <div class="sec-title">📝 README 各字段详解</div>
+    <p>模板 README 中有几个预设字段，这是它们的含义和填写建议：</p>
+
+    <div class="step-cards">
+      <div class="step-card">
+        <div class="step-num">P</div>
+        <div class="step-body">
+          <h3>Problem（问题）</h3>
+          <p><strong>写什么：</strong>你想解决什么问题？谁遇到了这个问题？影响有多大？</p>
+          <p><strong>怎么写：</strong>2-3 句话即可。用具体的场景描述，而不是抽象的目标。</p>
+          <p style="color:var(--c-success);font-size:.85rem">✅ "团队每周花 2 小时整理会议纪要，经常遗漏 Action Items"</p>
+          <p style="color:var(--c-danger);font-size:.85rem">❌ "提升团队效率"（太抽象）</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">I</div>
+        <div class="step-body">
+          <h3>Idea（想法）</h3>
+          <p><strong>写什么：</strong>你打算怎么解决？用什么技术或方法？</p>
+          <p><strong>怎么写：</strong>初步思路即可，不需要完整方案。</p>
+          <p style="color:var(--c-success);font-size:.85rem">✅ "用 Whisper API 做语音转文字，再用 GPT 自动摘要"</p>
+          <p style="color:var(--c-danger);font-size:.85rem">❌ "用 AI 解决"（太模糊）</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">S</div>
+        <div class="step-body">
+          <h3>Status（状态）</h3>
+          <p>标记项目当前所处的生命周期阶段：</p>
           <ul style="margin-top:6px">
-            <li>✅ 不删除已有文件</li>
-            <li>✅ 不随意改目录名</li>
-            <li>✅ 先把 README 写清楚再动其他</li>
+            <li><code>idea</code> — 刚有想法，还没开始动手</li>
+            <li><code>prototype</code> — 正在做 Demo 或 PoC</li>
+            <li><code>active</code> — 已有用户在使用</li>
           </ul>
+          <p style="color:var(--c-sub);font-size:.85rem;margin-top:4px">随项目发展及时更新状态。详见 <a href="LIFECYCLE.html">项目生命周期</a>。</p>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="step-card">
-        <div class="step-num">4</div>
-        <div class="step-body">
-          <h3>开始自由扩展</h3>
-          <p>README 完成后，你可以按需添加内容：</p>
-          <ul style="margin-top:6px">
-            <li>📝 <code>notes.md</code> — 记录想法和灵感</li>
-            <li>🧪 <code>demo/</code> — 放置 Demo 代码或截图</li>
-            <li>📖 <code>docs/</code> — 设计说明和架构文档</li>
-          </ul>
-        </div>
-      </div>
+  <!-- How to Expand -->
+  <div class="sec fi">
+    <div class="sec-title">🔧 如何扩展模板结构？</div>
+    <p>当你的项目逐渐成长，可以按需添加以下目录和文件：</p>
+
+    <div class="tmpl-grid" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr))">
+      <div class="tmpl-item"><div class="ico">📝</div><div class="name">notes.md</div><div class="desc">记录灵感和想法</div></div>
+      <div class="tmpl-item"><div class="ico">🧪</div><div class="name">demo/</div><div class="desc">Demo 代码或截图</div></div>
+      <div class="tmpl-item"><div class="ico">📖</div><div class="name">docs/</div><div class="desc">设计文档和架构</div></div>
+      <div class="tmpl-item"><div class="ico">🧩</div><div class="name">src/</div><div class="desc">源代码</div></div>
+      <div class="tmpl-item"><div class="ico">🧪</div><div class="name">tests/</div><div class="desc">测试代码</div></div>
+      <div class="tmpl-item"><div class="ico">📊</div><div class="name">data/</div><div class="desc">示例数据或分析</div></div>
+    </div>
+
+    <div class="tip info" style="margin-top:16px">
+      <span class="tip-icon">💡</span>
+      <span><strong>新手建议：</strong>先把 README 写清楚，再考虑加其他文件。不要一开始就追求完美的项目结构。</span>
     </div>
   </div>
 
@@ -222,36 +248,20 @@ layout: null
         <h4>✅ 推荐</h4>
         <ul>
           <li>先写 README 再写代码</li>
+          <li>保留模板原有文件结构</li>
           <li>尽早 Commit，不等完美</li>
           <li>邀请同事协作和反馈</li>
-          <li>记录失败和学到的东西</li>
         </ul>
       </div>
       <div class="dont-col">
         <h4>❌ 避免</h4>
         <ul>
           <li>跳过 README 直接写代码</li>
+          <li>随意删除模板预设文件</li>
           <li>担心"不够成熟"不敢提交</li>
           <li>把模板当成最终成品</li>
-          <li>一个人闷头做不交流</li>
         </ul>
       </div>
-    </div>
-  </div>
-
-  <!-- Checklist -->
-  <div class="sec fi">
-    <div class="sec-title">🎉 完成检查</div>
-    <p>如果你已经做到以下几点，说明你<strong>正确使用了模板</strong>：</p>
-    <ul class="checklist">
-      <li>使用模板创建了项目 Repo</li>
-      <li>填写了 README 中的 Problem 和 Idea</li>
-      <li>标记了当前项目阶段（Status）</li>
-      <li>做了第一次 Commit</li>
-    </ul>
-    <div class="tip info">
-      <span class="tip-icon">🎯</span>
-      <span>完成以上步骤后，项目成熟可进入毕业流程，详见 <a href="LIFECYCLE.html">项目生命周期</a>。</span>
     </div>
   </div>
 
