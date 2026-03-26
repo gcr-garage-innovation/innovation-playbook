@@ -1,9 +1,11 @@
 ---
 title: 治理与责任 Governance
+title_en: Governance & Responsibilities
 layout: page
 nav_id: governance
 ---
 
+<div class="lang-zh" markdown="1">
 
 # 治理与责任（Governance）
 
@@ -13,7 +15,7 @@ nav_id: governance
 
 本页面说明 Innovation Playbook 的**基本规则、责任边界，以及管理者常见问题**。
 
-目标不是“管死创新”，而是**让创新可持续、可复制、可放大**。
+目标不是"管死创新"，而是**让创新可持续、可复制、可放大**。
 
 ---
 
@@ -83,7 +85,7 @@ Innovation Playbook 的治理目标是：
 - ❌ 对外发布正式产品承诺
 - ❌ 使用真实客户/生产数据（除非已批准）
 - ❌ 绕过组织安全或合规要求
-- ❌ 以“创新”为名推进未授权的正式项目
+- ❌ 以"创新"为名推进未授权的正式项目
 
 ---
 
@@ -91,7 +93,7 @@ Innovation Playbook 的治理目标是：
 
 Graduation 指的是：
 
-> **一个创新项目已经不再是“探索”，而是具备进入正式交付或产品体系的条件。**
+> **一个创新项目已经不再是"探索"，而是具备进入正式交付或产品体系的条件。**
 
 通常包括：
 - 明确业务价值
@@ -130,7 +132,7 @@ Graduation 指的是：
 
 ---
 
-### Q3：如何避免“太多低质量项目”？
+### Q3：如何避免"太多低质量项目"？
 
 建议通过：
 - 清晰的 README 模板
@@ -162,3 +164,167 @@ Innovation Playbook 的治理原则是：
 - 交流
 - 透明
 - 记录
+
+</div>
+
+<div class="lang-en" markdown="1">
+
+# Governance & Responsibilities
+
+> 🎯 Who is this for: Managers, innovation leads, organization admins
+> 📌 What this page addresses: Rules, responsibilities, and boundaries for innovation projects  
+> 👉 What you can do after reading: Maintain governance while supporting innovation
+
+This page describes the **ground rules, responsibility boundaries, and frequently asked questions from managers** about the Innovation Playbook.
+
+The goal is not to stifle innovation, but to **make it sustainable, repeatable, and scalable**.
+
+---
+
+## 🎯 What Are the Governance Goals of the Innovation Playbook?
+
+The governance goals of the Innovation Playbook are:
+
+- ✅ Provide employees with a safe space to innovate
+- ✅ Ensure ideas are documented and can be learned from
+- ✅ Prevent innovation projects from going off track or becoming unowned
+- ✅ Enable smooth transition into formal product or business systems when a project matures
+
+---
+
+## 👥 Roles & Responsibilities
+
+### 👤 Project Owner
+
+Typically:
+- The person who proposed the idea
+- The person who created the project repo
+
+Responsibilities include:
+- Maintaining the project README
+- Clearly indicating the current project status (idea / prototype / active)
+- Driving initial experimentation and learning
+
+---
+
+### 👥 Contributors
+
+Can be:
+- Colleagues
+- Hackathon teammates
+- Ad-hoc support staff
+
+Responsibilities include:
+- Assisting with design, development, or validation
+- Documenting learnings and conclusions
+- Following the project's basic conventions
+
+---
+
+### 🧭 Innovation Org Admin (Org Admin / Garage / Innovation Lead)
+
+Responsibilities include:
+- Maintaining the Innovation Playbook
+- Providing templates and guidance
+- Helping projects connect with resources
+- Deciding whether a project enters the Graduation process
+
+---
+
+## 📂 What Can Projects Do? What Should They Avoid?
+
+### ✅ Allowed
+
+- Document and explore ideas
+- Build PoCs / Demos
+- Use open-source tools and platform capabilities
+- Trial and validate on a small scale
+
+---
+
+### 🚫 Not Allowed
+
+- ❌ Making official product commitments externally
+- ❌ Using real customer or production data (unless approved)
+- ❌ Bypassing organizational security or compliance requirements
+- ❌ Advancing unauthorized formal projects under the banner of "innovation"
+
+---
+
+## 🔄 What Is Graduation?
+
+Graduation means:
+
+> **An innovation project has moved beyond "exploration" and meets the criteria to enter a formal delivery or product system.**
+
+This typically includes:
+- Clear business value
+- Stable usage scenarios
+- A clearly identified owner
+- A need for long-term maintenance
+
+👉 After Graduation, a project will usually:
+- Migrate its repo or codebase
+- Join a formal team or product line
+- Follow standard governance processes
+
+(See: [Project Lifecycle](LIFECYCLE.html))
+
+---
+
+## ❓ Frequently Asked Questions for Managers
+
+### Q1: Can anyone create an innovation project?
+
+✅ Yes.  
+But every project should have a **clearly identified Owner**.
+
+---
+
+### Q2: What if a project stalls?
+
+✅ That's okay.
+
+Innovation projects can be:
+- Paused
+- Archived
+- Retained as a learning case
+
+Stalling ≠ Failure.
+
+---
+
+### Q3: How do we avoid "too many low-quality projects"?
+
+Recommended approaches:
+- Clear README templates
+- Regular Demo / Show & Tell sessions
+- Encourage retrospectives and learning summaries
+
+👉 Quality comes from guidance, not restriction.
+
+---
+
+### Q4: Do innovation projects have KPIs?
+
+🚫 There are no universal KPIs.
+
+The value of innovation is reflected in:
+- Speed of learning
+- Cross-team collaboration
+- Discovery of new opportunities
+
+---
+
+## ✅ Summary
+
+The governance principles of the Innovation Playbook are:
+
+> **Provide space, set boundaries, foster learning, enable scaling**
+
+If you're unsure whether a situation is appropriate, default to:
+- Communication
+- Transparency
+- Documentation
+
+</div>

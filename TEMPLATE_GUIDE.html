@@ -91,6 +91,15 @@ layout: null
     .fi{opacity:0;transform:translateY(20px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
     .fi.v{opacity:1;transform:translateY(0)}
 
+    /* Bilingual toggle */
+    .lang-toggle { display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:3px 4px;cursor:pointer;font-size:.78rem }
+    .lang-toggle span { padding:3px 10px;border-radius:16px;color:rgba(255,255,255,.7);transition:all .2s }
+    .lang-toggle span.active { background:#fff;color:var(--c-primary-dark);font-weight:700 }
+    .lang-en { display:none }
+    html[lang="en"] .lang-zh { display:none }
+    html[lang="en"] .lang-en { display:block; }
+    html[lang="en"] span.lang-en { display:inline; }
+
     @media(max-width:640px){
       .do-dont{grid-template-columns:1fr}
       .tmpl-grid{grid-template-columns:repeat(2,1fr)}
@@ -104,75 +113,96 @@ layout: null
 <header class="header">
   <div class="header-brand"><a href="index.html">🚀 <span>Innovation Playbook</span></a></div>
   <div class="header-nav">
-    <a href="GET_STARTED.html">🎯 新手入门</a>
-    <a href="CREATE_PROJECT.html">🛠️ 创建项目</a>
-    <a href="TEMPLATE_GUIDE.html" class="active">📋 模板指南</a>
-    <a href="LIFECYCLE.html">🔄 生命周期</a>
+    <a href="GET_STARTED.html"><span class="lang-zh">🎯 新手入门</span><span class="lang-en">🎯 Get Started</span></a>
+    <a href="CREATE_PROJECT.html"><span class="lang-zh">🛠️ 创建项目</span><span class="lang-en">🛠️ Create Project</span></a>
+    <a href="TEMPLATE_GUIDE.html" class="active"><span class="lang-zh">📋 模板指南</span><span class="lang-en">📋 Template Guide</span></a>
+    <a href="LIFECYCLE.html"><span class="lang-zh">🔄 生命周期</span><span class="lang-en">🔄 Lifecycle</span></a>
     <a href="FAQ.html">❓ FAQ</a>
-    <a href="GOVERNANCE.html">📜 治理</a>
+    <a href="GOVERNANCE.html"><span class="lang-zh">📜 治理</span><span class="lang-en">📜 Governance</span></a>
+    <div class="lang-toggle" onclick="toggleLang()">
+      <span id="lang-zh-btn" class="active">中文</span>
+      <span id="lang-en-btn">EN</span>
+    </div>
   </div>
 </header>
 
 <div class="page">
 
   <div class="breadcrumb">
-    <a href="index.html">首页</a> / <strong>模板指南</strong>
+    <a href="index.html"><span class="lang-zh">首页</span><span class="lang-en">Home</span></a> / <strong><span class="lang-zh">模板指南</span><span class="lang-en">Template Guide</span></strong>
   </div>
 
   <!-- Hero -->
   <div class="page-hero">
-    <h1>📋 模板参考手册</h1>
-    <p class="subtitle">了解创新项目模板包含什么、每个部分的作用，以及如何根据你的需求自定义扩展。</p>
+    <h1 class="lang-zh">📋 模板参考手册</h1>
+    <h1 class="lang-en">📋 Template Reference Manual</h1>
+    <p class="subtitle lang-zh">了解创新项目模板包含什么、每个部分的作用，以及如何根据你的需求自定义扩展。</p>
+    <p class="subtitle lang-en">Learn what the innovation project template contains, the purpose of each section, and how to customize and extend it to fit your needs.</p>
     <div class="meta-bar">
-      <span class="meta-tag who">🎯 适合：想深入了解模板结构的人</span>
-      <span class="meta-tag time">⏱️ 阅读时间：5 分钟</span>
+      <span class="meta-tag who"><span class="lang-zh">🎯 适合：想深入了解模板结构的人</span><span class="lang-en">🎯 For: Anyone wanting to understand the template structure</span></span>
+      <span class="meta-tag time"><span class="lang-zh">⏱️ 阅读时间：5 分钟</span><span class="lang-en">⏱️ Reading time: 5 min</span></span>
     </div>
   </div>
 
   <!-- What is Template -->
   <div class="sec fi">
-    <div class="sec-title">🤔 什么是创新项目模板？</div>
-    <p>模板（Template Repository）是一个<strong>已经准备好的项目骨架</strong>，帮助你跳过繁琐的初始化工作，直接进入核心内容。</p>
+    <div class="sec-title lang-zh">🤔 什么是创新项目模板？</div>
+    <div class="sec-title lang-en">🤔 What is the Innovation Project Template?</div>
+    <p class="lang-zh">模板（Template Repository）是一个<strong>已经准备好的项目骨架</strong>，帮助你跳过繁琐的初始化工作，直接进入核心内容。</p>
+    <p class="lang-en">The Template Repository is a <strong>pre-built project skeleton</strong> that helps you skip tedious initialization work and jump straight into the core content.</p>
     <div class="tmpl-grid">
-      <div class="tmpl-item"><div class="ico">📁</div><div class="name">标准结构</div><div class="desc">推荐的目录和文件</div></div>
-      <div class="tmpl-item"><div class="ico">📝</div><div class="name">README 模板</div><div class="desc">引导你思考问题</div></div>
-      <div class="tmpl-item"><div class="ico">📌</div><div class="name">最佳实践</div><div class="desc">内置说明和示例</div></div>
-      <div class="tmpl-item"><div class="ico">🚀</div><div class="name">即开即用</div><div class="desc">一键创建，不需配置</div></div>
+      <div class="tmpl-item"><div class="ico">📁</div><div class="name lang-zh">标准结构</div><div class="name lang-en">Standard Structure</div><div class="desc lang-zh">推荐的目录和文件</div><div class="desc lang-en">Recommended directories and files</div></div>
+      <div class="tmpl-item"><div class="ico">📝</div><div class="name lang-zh">README 模板</div><div class="name lang-en">README Template</div><div class="desc lang-zh">引导你思考问题</div><div class="desc lang-en">Guides you to think through problems</div></div>
+      <div class="tmpl-item"><div class="ico">📌</div><div class="name lang-zh">最佳实践</div><div class="name lang-en">Best Practices</div><div class="desc lang-zh">内置说明和示例</div><div class="desc lang-en">Built-in instructions and examples</div></div>
+      <div class="tmpl-item"><div class="ico">🚀</div><div class="name lang-zh">即开即用</div><div class="name lang-en">Ready to Use</div><div class="desc lang-zh">一键创建，不需配置</div><div class="desc lang-en">One-click creation, no setup needed</div></div>
     </div>
-    <div class="tip info">
+    <div class="tip info lang-zh">
       <span class="tip-icon">💡</span>
       <span>想直接创建项目？请前往 <a href="CREATE_PROJECT.html">创建项目教程</a>，那里有完整的操作步骤。本页面重点介绍模板的结构和自定义方法。</span>
+    </div>
+    <div class="tip info lang-en">
+      <span class="tip-icon">💡</span>
+      <span>Want to create a project right away? Head to the <a href="CREATE_PROJECT.html">Create Project Tutorial</a> for step-by-step instructions. This page focuses on the template's structure and customization methods.</span>
     </div>
   </div>
 
   <!-- Template Structure -->
   <div class="sec fi">
-    <div class="sec-title">📂 模板包含哪些文件？</div>
-    <p>使用 <code>template-innovation-repo</code> 创建的项目默认包含以下结构：</p>
+    <div class="sec-title lang-zh">📂 模板包含哪些文件？</div>
+    <div class="sec-title lang-en">📂 What Files Does the Template Include?</div>
+    <p class="lang-zh">使用 <code>template-innovation-repo</code> 创建的项目默认包含以下结构：</p>
+    <p class="lang-en">Projects created using <code>template-innovation-repo</code> include the following structure by default:</p>
 
     <div class="step-cards">
       <div class="step-card">
         <div class="step-num" style="background:var(--c-primary)">📝</div>
         <div class="step-body">
-          <h3>README.md — 项目说明书</h3>
-          <p>这是你的项目最重要的文件。模板已预设了 <strong>Problem</strong>、<strong>Idea</strong>、<strong>Status</strong> 等字段，帮助你结构化地描述项目。</p>
-          <p style="color:var(--c-sub);font-size:.85rem;margin-top:4px">⭐ 任何人访问你的 Repo，第一眼看到的就是这个文件。</p>
+          <h3 class="lang-zh">README.md — 项目说明书</h3>
+          <h3 class="lang-en">README.md — Project Description</h3>
+          <p class="lang-zh">这是你的项目最重要的文件。模板已预设了 <strong>Problem</strong>、<strong>Idea</strong>、<strong>Status</strong> 等字段，帮助你结构化地描述项目。</p>
+          <p class="lang-en">This is the most important file in your project. The template comes with pre-set fields like <strong>Problem</strong>, <strong>Idea</strong>, and <strong>Status</strong> to help you describe your project in a structured way.</p>
+          <p class="lang-zh" style="color:var(--c-sub);font-size:.85rem;margin-top:4px">⭐ 任何人访问你的 Repo，第一眼看到的就是这个文件。</p>
+          <p class="lang-en" style="color:var(--c-sub);font-size:.85rem;margin-top:4px">⭐ This is the first thing anyone sees when they visit your Repo.</p>
         </div>
       </div>
 
       <div class="step-card">
         <div class="step-num" style="background:#6b7280">📄</div>
         <div class="step-body">
-          <h3>.gitignore — 忽略规则</h3>
-          <p>告诉 Git 哪些文件不需要被跟踪（如临时文件、编译产物、环境变量等）。通常不需要修改。</p>
+          <h3 class="lang-zh">.gitignore — 忽略规则</h3>
+          <h3 class="lang-en">.gitignore — Ignore Rules</h3>
+          <p class="lang-zh">告诉 Git 哪些文件不需要被跟踪（如临时文件、编译产物、环境变量等）。通常不需要修改。</p>
+          <p class="lang-en">Tells Git which files should not be tracked (such as temp files, build artifacts, environment variables, etc.). Usually no modifications needed.</p>
         </div>
       </div>
 
       <div class="step-card">
         <div class="step-num" style="background:#6b7280">📜</div>
         <div class="step-body">
-          <h3>LICENSE — 开源协议</h3>
-          <p>定义其他人可以如何使用你的代码。模板默认使用 MIT 协议（最宽松的开源协议）。</p>
+          <h3 class="lang-zh">LICENSE — 开源协议</h3>
+          <h3 class="lang-en">LICENSE — Open Source License</h3>
+          <p class="lang-zh">定义其他人可以如何使用你的代码。模板默认使用 MIT 协议（最宽松的开源协议）。</p>
+          <p class="lang-en">Defines how others can use your code. The template uses the MIT License by default (the most permissive open source license).</p>
         </div>
       </div>
     </div>
@@ -180,41 +210,61 @@ layout: null
 
   <!-- README Deep Dive -->
   <div class="sec fi">
-    <div class="sec-title">📝 README 各字段详解</div>
-    <p>模板 README 中有几个预设字段，这是它们的含义和填写建议：</p>
+    <div class="sec-title lang-zh">📝 README 各字段详解</div>
+    <div class="sec-title lang-en">📝 README Field Details</div>
+    <p class="lang-zh">模板 README 中有几个预设字段，这是它们的含义和填写建议：</p>
+    <p class="lang-en">The template README has several pre-set fields. Here are their meanings and tips for filling them in:</p>
 
     <div class="step-cards">
       <div class="step-card">
         <div class="step-num">P</div>
         <div class="step-body">
-          <h3>Problem（问题）</h3>
-          <p><strong>写什么：</strong>你想解决什么问题？谁遇到了这个问题？影响有多大？</p>
-          <p><strong>怎么写：</strong>2-3 句话即可。用具体的场景描述，而不是抽象的目标。</p>
-          <p style="color:var(--c-success);font-size:.85rem">✅ "团队每周花 2 小时整理会议纪要，经常遗漏 Action Items"</p>
-          <p style="color:var(--c-danger);font-size:.85rem">❌ "提升团队效率"（太抽象）</p>
+          <h3 class="lang-zh">Problem（问题）</h3>
+          <h3 class="lang-en">Problem</h3>
+          <p class="lang-zh"><strong>写什么：</strong>你想解决什么问题？谁遇到了这个问题？影响有多大？</p>
+          <p class="lang-en"><strong>What to write:</strong> What problem are you solving? Who encounters this problem? How significant is the impact?</p>
+          <p class="lang-zh"><strong>怎么写：</strong>2-3 句话即可。用具体的场景描述，而不是抽象的目标。</p>
+          <p class="lang-en"><strong>How to write:</strong> 2-3 sentences is enough. Use concrete scenarios, not abstract goals.</p>
+          <p class="lang-zh" style="color:var(--c-success);font-size:.85rem">✅ "团队每周花 2 小时整理会议纪要，经常遗漏 Action Items"</p>
+          <p class="lang-en" style="color:var(--c-success);font-size:.85rem">✅ "The team spends 2 hours weekly organizing meeting notes and often misses Action Items"</p>
+          <p class="lang-zh" style="color:var(--c-danger);font-size:.85rem">❌ "提升团队效率"（太抽象）</p>
+          <p class="lang-en" style="color:var(--c-danger);font-size:.85rem">❌ "Improve team efficiency" (too abstract)</p>
         </div>
       </div>
       <div class="step-card">
         <div class="step-num">I</div>
         <div class="step-body">
-          <h3>Idea（想法）</h3>
-          <p><strong>写什么：</strong>你打算怎么解决？用什么技术或方法？</p>
-          <p><strong>怎么写：</strong>初步思路即可，不需要完整方案。</p>
-          <p style="color:var(--c-success);font-size:.85rem">✅ "用 Whisper API 做语音转文字，再用 GPT 自动摘要"</p>
-          <p style="color:var(--c-danger);font-size:.85rem">❌ "用 AI 解决"（太模糊）</p>
+          <h3 class="lang-zh">Idea（想法）</h3>
+          <h3 class="lang-en">Idea</h3>
+          <p class="lang-zh"><strong>写什么：</strong>你打算怎么解决？用什么技术或方法？</p>
+          <p class="lang-en"><strong>What to write:</strong> How do you plan to solve it? What technology or approach will you use?</p>
+          <p class="lang-zh"><strong>怎么写：</strong>初步思路即可，不需要完整方案。</p>
+          <p class="lang-en"><strong>How to write:</strong> A rough idea is fine — you don't need a complete solution.</p>
+          <p class="lang-zh" style="color:var(--c-success);font-size:.85rem">✅ "用 Whisper API 做语音转文字，再用 GPT 自动摘要"</p>
+          <p class="lang-en" style="color:var(--c-success);font-size:.85rem">✅ "Use Whisper API for speech-to-text, then GPT for auto-summarization"</p>
+          <p class="lang-zh" style="color:var(--c-danger);font-size:.85rem">❌ "用 AI 解决"（太模糊）</p>
+          <p class="lang-en" style="color:var(--c-danger);font-size:.85rem">❌ "Use AI to solve it" (too vague)</p>
         </div>
       </div>
       <div class="step-card">
         <div class="step-num">S</div>
         <div class="step-body">
-          <h3>Status（状态）</h3>
-          <p>标记项目当前所处的生命周期阶段：</p>
-          <ul style="margin-top:6px">
+          <h3 class="lang-zh">Status（状态）</h3>
+          <h3 class="lang-en">Status</h3>
+          <p class="lang-zh">标记项目当前所处的生命周期阶段：</p>
+          <p class="lang-en">Mark the current lifecycle stage of your project:</p>
+          <ul class="lang-zh" style="margin-top:6px">
             <li><code>idea</code> — 刚有想法，还没开始动手</li>
             <li><code>prototype</code> — 正在做 Demo 或 PoC</li>
             <li><code>active</code> — 已有用户在使用</li>
           </ul>
-          <p style="color:var(--c-sub);font-size:.85rem;margin-top:4px">随项目发展及时更新状态。详见 <a href="LIFECYCLE.html">项目生命周期</a>。</p>
+          <ul class="lang-en" style="margin-top:6px">
+            <li><code>idea</code> — Just an idea, haven't started yet</li>
+            <li><code>prototype</code> — Building a Demo or PoC</li>
+            <li><code>active</code> — Already has users</li>
+          </ul>
+          <p class="lang-zh" style="color:var(--c-sub);font-size:.85rem;margin-top:4px">随项目发展及时更新状态。详见 <a href="LIFECYCLE.html">项目生命周期</a>。</p>
+          <p class="lang-en" style="color:var(--c-sub);font-size:.85rem;margin-top:4px">Update the status as your project evolves. See <a href="LIFECYCLE.html">Project Lifecycle</a> for details.</p>
         </div>
       </div>
     </div>
@@ -222,44 +272,53 @@ layout: null
 
   <!-- How to Expand -->
   <div class="sec fi">
-    <div class="sec-title">🔧 如何扩展模板结构？</div>
-    <p>当你的项目逐渐成长，可以按需添加以下目录和文件：</p>
+    <div class="sec-title lang-zh">🔧 如何扩展模板结构？</div>
+    <div class="sec-title lang-en">🔧 How to Extend the Template Structure?</div>
+    <p class="lang-zh">当你的项目逐渐成长，可以按需添加以下目录和文件：</p>
+    <p class="lang-en">As your project grows, you can add the following directories and files as needed:</p>
 
     <div class="tmpl-grid" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr))">
-      <div class="tmpl-item"><div class="ico">📝</div><div class="name">notes.md</div><div class="desc">记录灵感和想法</div></div>
-      <div class="tmpl-item"><div class="ico">🧪</div><div class="name">demo/</div><div class="desc">Demo 代码或截图</div></div>
-      <div class="tmpl-item"><div class="ico">📖</div><div class="name">docs/</div><div class="desc">设计文档和架构</div></div>
-      <div class="tmpl-item"><div class="ico">🧩</div><div class="name">src/</div><div class="desc">源代码</div></div>
-      <div class="tmpl-item"><div class="ico">🧪</div><div class="name">tests/</div><div class="desc">测试代码</div></div>
-      <div class="tmpl-item"><div class="ico">📊</div><div class="name">data/</div><div class="desc">示例数据或分析</div></div>
+      <div class="tmpl-item"><div class="ico">📝</div><div class="name">notes.md</div><div class="desc lang-zh">记录灵感和想法</div><div class="desc lang-en">Record ideas and inspirations</div></div>
+      <div class="tmpl-item"><div class="ico">🧪</div><div class="name">demo/</div><div class="desc lang-zh">Demo 代码或截图</div><div class="desc lang-en">Demo code or screenshots</div></div>
+      <div class="tmpl-item"><div class="ico">📖</div><div class="name">docs/</div><div class="desc lang-zh">设计文档和架构</div><div class="desc lang-en">Design docs and architecture</div></div>
+      <div class="tmpl-item"><div class="ico">🧩</div><div class="name">src/</div><div class="desc lang-zh">源代码</div><div class="desc lang-en">Source code</div></div>
+      <div class="tmpl-item"><div class="ico">🧪</div><div class="name">tests/</div><div class="desc lang-zh">测试代码</div><div class="desc lang-en">Test code</div></div>
+      <div class="tmpl-item"><div class="ico">📊</div><div class="name">data/</div><div class="desc lang-zh">示例数据或分析</div><div class="desc lang-en">Sample data or analysis</div></div>
     </div>
 
-    <div class="tip info" style="margin-top:16px">
+    <div class="tip info lang-zh" style="margin-top:16px">
       <span class="tip-icon">💡</span>
       <span><strong>新手建议：</strong>先把 README 写清楚，再考虑加其他文件。不要一开始就追求完美的项目结构。</span>
+    </div>
+    <div class="tip info lang-en" style="margin-top:16px">
+      <span class="tip-icon">💡</span>
+      <span><strong>Beginner tip:</strong> Write a clear README first, then consider adding other files. Don't aim for a perfect project structure from the start.</span>
     </div>
   </div>
 
   <!-- Do & Don't -->
   <div class="sec fi">
-    <div class="sec-title">⚡ 做与不做</div>
+    <div class="sec-title lang-zh">⚡ 做与不做</div>
+    <div class="sec-title lang-en">⚡ Do's and Don'ts</div>
     <div class="do-dont">
       <div class="do-col">
-        <h4>✅ 推荐</h4>
+        <h4 class="lang-zh">✅ 推荐</h4>
+        <h4 class="lang-en">✅ Recommended</h4>
         <ul>
-          <li>先写 README 再写代码</li>
-          <li>保留模板原有文件结构</li>
-          <li>尽早 Commit，不等完美</li>
-          <li>邀请同事协作和反馈</li>
+          <li><span class="lang-zh">先写 README 再写代码</span><span class="lang-en">Write the README before writing code</span></li>
+          <li><span class="lang-zh">保留模板原有文件结构</span><span class="lang-en">Keep the template's original file structure</span></li>
+          <li><span class="lang-zh">尽早 Commit，不等完美</span><span class="lang-en">Commit early, don't wait for perfection</span></li>
+          <li><span class="lang-zh">邀请同事协作和反馈</span><span class="lang-en">Invite colleagues to collaborate and give feedback</span></li>
         </ul>
       </div>
       <div class="dont-col">
-        <h4>❌ 避免</h4>
+        <h4 class="lang-zh">❌ 避免</h4>
+        <h4 class="lang-en">❌ Avoid</h4>
         <ul>
-          <li>跳过 README 直接写代码</li>
-          <li>随意删除模板预设文件</li>
-          <li>担心"不够成熟"不敢提交</li>
-          <li>把模板当成最终成品</li>
+          <li><span class="lang-zh">跳过 README 直接写代码</span><span class="lang-en">Skip the README and jump into code</span></li>
+          <li><span class="lang-zh">随意删除模板预设文件</span><span class="lang-en">Casually delete template preset files</span></li>
+          <li><span class="lang-zh">担心"不够成熟"不敢提交</span><span class="lang-en">Fear submitting because it's "not polished enough"</span></li>
+          <li><span class="lang-zh">把模板当成最终成品</span><span class="lang-en">Treat the template as the final product</span></li>
         </ul>
       </div>
     </div>
@@ -267,12 +326,12 @@ layout: null
 
   <!-- Footer Nav -->
   <div class="foot-nav" style="flex-wrap:wrap;justify-content:center;gap:16px">
-    <a href="index.html">🏠 返回首页</a>
-    <a href="GET_STARTED.html">🎯 新手入门</a>
-    <a href="CREATE_PROJECT.html">← 创建项目</a>
-    <a href="LIFECYCLE.html">🔄 项目生命周期 →</a>
+    <a href="index.html"><span class="lang-zh">🏠 返回首页</span><span class="lang-en">🏠 Home</span></a>
+    <a href="GET_STARTED.html"><span class="lang-zh">🎯 新手入门</span><span class="lang-en">🎯 Get Started</span></a>
+    <a href="CREATE_PROJECT.html"><span class="lang-zh">← 创建项目</span><span class="lang-en">← Create Project</span></a>
+    <a href="LIFECYCLE.html"><span class="lang-zh">🔄 项目生命周期 →</span><span class="lang-en">🔄 Lifecycle →</span></a>
     <a href="FAQ.html">❓ FAQ</a>
-    <a href="GOVERNANCE.html">📜 治理与规则</a>
+    <a href="GOVERNANCE.html"><span class="lang-zh">📜 治理与规则</span><span class="lang-en">📜 Governance & Rules</span></a>
   </div>
 
 </div>
@@ -280,6 +339,8 @@ layout: null
 <script>
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v')}),{threshold:.08});
 document.querySelectorAll('.fi').forEach(el=>io.observe(el));
+function toggleLang(){var c=document.documentElement.lang;var n=c==='en'?'zh':'en';document.documentElement.lang=n;document.getElementById('lang-zh-btn').className=n==='zh'?'active':'';document.getElementById('lang-en-btn').className=n==='en'?'active':'';localStorage.setItem('playbook-lang',n)}
+(function(){var s=localStorage.getItem('playbook-lang');if(s==='en'){document.documentElement.lang='en';var zh=document.getElementById('lang-zh-btn');var en=document.getElementById('lang-en-btn');if(zh)zh.className='';if(en)en.className='active'}})();
 </script>
 </body>
 </html>

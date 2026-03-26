@@ -45,9 +45,17 @@ layout: null
     .header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--header-h);display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:var(--c-primary-dark);color:#fff;box-shadow:0 1px 4px rgba(0,0,0,.12)}
     .header-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1rem}
     .header-brand span:first-child{font-size:1.3rem}
-    .header-links{display:flex;gap:8px}
+    .header-links{display:flex;gap:8px;align-items:center}
     .header-links a{color:rgba(255,255,255,.8);font-size:.82rem;padding:5px 12px;border-radius:6px;transition:background .15s}
     .header-links a:hover{background:rgba(255,255,255,.12);color:#fff}
+
+    /* ===== Language Toggle ===== */
+    .lang-toggle{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:3px 4px;cursor:pointer;font-size:.78rem}
+    .lang-toggle span{padding:3px 10px;border-radius:16px;color:rgba(255,255,255,.7);transition:all .2s}
+    .lang-toggle span.active{background:#fff;color:var(--c-primary-dark);font-weight:700}
+    .lang-en{display:none}
+    html[lang="en"] .lang-zh{display:none}
+    html[lang="en"] .lang-en{display:block}
 
     /* ===== Sidebar ===== */
     .layout{display:flex;margin-top:var(--header-h);min-height:calc(100vh - var(--header-h))}
@@ -176,29 +184,36 @@ layout: null
   <div class="header-links">
     <a href="https://github.com/gcr-garage-innovation" target="_blank">🏢 <span class="link-text">Organization</span></a>
     <a href="https://github.com/gcr-garage-innovation/innovation-playbook" target="_blank">📦 <span class="link-text">GitHub</span></a>
+    <div class="lang-toggle" onclick="toggleLang()">
+      <span id="lang-zh-btn" class="active">中</span>
+      <span id="lang-en-btn">EN</span>
+    </div>
   </div>
 </header>
 
 <div class="layout">
   <!-- Sidebar -->
   <aside class="sidebar" id="sidebar">
-    <h4>首页</h4>
+    <h4 class="lang-zh">首页</h4>
+    <h4 class="lang-en">Home</h4>
     <ul class="side-nav">
-      <li><a class="side-link active" href="#welcome"><span class="side-icon">🏠</span>概览</a></li>
-      <li><a class="side-link" href="#quickstart"><span class="side-icon">⚡</span>快速开始</a></li>
-      <li><a class="side-link" href="#guides"><span class="side-icon">📚</span>使用指南</a></li>
+      <li><a class="side-link active" href="#welcome"><span class="side-icon">🏠</span><span class="lang-zh">概览</span><span class="lang-en">Overview</span></a></li>
+      <li><a class="side-link" href="#quickstart"><span class="side-icon">⚡</span><span class="lang-zh">快速开始</span><span class="lang-en">Quick Start</span></a></li>
+      <li><a class="side-link" href="#guides"><span class="side-icon">📚</span><span class="lang-zh">使用指南</span><span class="lang-en">Guides</span></a></li>
     </ul>
-    <h4>详细文档</h4>
+    <h4 class="lang-zh">详细文档</h4>
+    <h4 class="lang-en">Documentation</h4>
     <ul class="side-nav">
-      <li><a class="side-link" href="GET_STARTED.html"><span class="side-icon">🎯</span>新手入门</a></li>
-      <li><a class="side-link" href="CREATE_PROJECT.html"><span class="side-icon">🛠️</span>创建项目</a></li>
-      <li><a class="side-link" href="TEMPLATE_GUIDE.html"><span class="side-icon">📋</span>模板指南</a></li>
-      <li><a class="side-link" href="LIFECYCLE.html"><span class="side-icon">🔄</span>项目生命周期</a></li>
+      <li><a class="side-link" href="GET_STARTED.html"><span class="side-icon">🎯</span><span class="lang-zh">新手入门</span><span class="lang-en">Getting Started</span></a></li>
+      <li><a class="side-link" href="CREATE_PROJECT.html"><span class="side-icon">🛠️</span><span class="lang-zh">创建项目</span><span class="lang-en">Create Project</span></a></li>
+      <li><a class="side-link" href="TEMPLATE_GUIDE.html"><span class="side-icon">📋</span><span class="lang-zh">模板指南</span><span class="lang-en">Template Guide</span></a></li>
+      <li><a class="side-link" href="LIFECYCLE.html"><span class="side-icon">🔄</span><span class="lang-zh">项目生命周期</span><span class="lang-en">Project Lifecycle</span></a></li>
     </ul>
-    <h4>参考</h4>
+    <h4 class="lang-zh">参考</h4>
+    <h4 class="lang-en">Reference</h4>
     <ul class="side-nav">
-      <li><a class="side-link" href="GOVERNANCE.html"><span class="side-icon">🏛️</span>治理与规则</a></li>
-      <li><a class="side-link" href="FAQ.html"><span class="side-icon">❓</span>常见问题</a></li>
+      <li><a class="side-link" href="GOVERNANCE.html"><span class="side-icon">🏛️</span><span class="lang-zh">治理与规则</span><span class="lang-en">Governance</span></a></li>
+      <li><a class="side-link" href="FAQ.html"><span class="side-icon">❓</span><span class="lang-zh">常见问题</span><span class="lang-en">FAQ</span></a></li>
     </ul>
   </aside>
 
@@ -209,15 +224,18 @@ layout: null
     <section class="hero" id="welcome">
       <span class="hero-badge">📘 GCR Garage Innovation</span>
       <h1>Innovation Playbook</h1>
-      <p class="hero-desc">帮助每一位员工——无论技术背景——从零开始发起创新项目。<br>从想法到原型，从探索到毕业，这里是你的完整指南。</p>
+      <p class="hero-desc lang-zh">帮助每一位员工——无论技术背景——从零开始发起创新项目。<br>从想法到原型，从探索到毕业，这里是你的完整指南。</p>
+      <p class="hero-desc lang-en">Helping every employee—regardless of technical background—launch innovation projects from scratch.<br>From ideas to prototypes, from exploration to graduation, this is your complete guide.</p>
       <div class="hero-actions">
-        <a class="btn btn-fill" href="#quickstart">⚡ 三步开始</a>
-        <a class="btn btn-outline" href="#guides">📚 浏览全部指南</a>
+        <a class="btn btn-fill lang-zh" href="#quickstart">⚡ 三步开始</a>
+        <a class="btn btn-fill lang-en" href="#quickstart">⚡ Start in 3 Steps</a>
+        <a class="btn btn-outline lang-zh" href="#guides">📚 浏览全部指南</a>
+        <a class="btn btn-outline lang-en" href="#guides">📚 Browse All Guides</a>
       </div>
       <div class="stats">
-        <div class="stat"><div class="stat-val">3</div><div class="stat-lbl">步开始创新</div></div>
-        <div class="stat"><div class="stat-val">6</div><div class="stat-lbl">份详细文档</div></div>
-        <div class="stat"><div class="stat-val">0</div><div class="stat-lbl">技术门槛</div></div>
+        <div class="stat"><div class="stat-val">3</div><div class="stat-lbl lang-zh">步开始创新</div><div class="stat-lbl lang-en">steps to innovate</div></div>
+        <div class="stat"><div class="stat-val">6</div><div class="stat-lbl lang-zh">份详细文档</div><div class="stat-lbl lang-en">detailed guides</div></div>
+        <div class="stat"><div class="stat-val">0</div><div class="stat-lbl lang-zh">技术门槛</div><div class="stat-lbl lang-en">technical barrier</div></div>
       </div>
     </section>
 
@@ -225,27 +243,38 @@ layout: null
     <section class="sec fi" id="quickstart">
       <div class="sec-head">
         <span class="sec-icon">⚡</span>
-        <span class="sec-title">三步开始创新</span>
-        <span class="sec-sub">10 分钟内完成</span>
+        <span class="sec-title lang-zh">三步开始创新</span>
+        <span class="sec-title lang-en">Start Innovating in 3 Steps</span>
+        <span class="sec-sub lang-zh">10 分钟内完成</span>
+        <span class="sec-sub lang-en">Complete in 10 minutes</span>
       </div>
       <div class="timeline">
         <div class="tl-item">
           <div class="tl-dot">1</div>
-          <div class="tl-title">完成准备工作</div>
-          <div class="tl-desc">注册 GitHub 账号，加入 <code>gcr-garage-innovation</code> Organization，确认你在 <code>incubator-creators</code> Team 中。</div>
-          <a class="tl-link" href="GET_STARTED.html">准备清单 →</a>
+          <div class="tl-title lang-zh">完成准备工作</div>
+          <div class="tl-title lang-en">Complete Prerequisites</div>
+          <div class="tl-desc lang-zh">注册 GitHub 账号，加入 <code>gcr-garage-innovation</code> Organization，确认你在 <code>incubator-creators</code> Team 中。</div>
+          <div class="tl-desc lang-en">Register a GitHub account, join the <code>gcr-garage-innovation</code> Organization, and confirm you are in the <code>incubator-creators</code> Team.</div>
+          <a class="tl-link lang-zh" href="GET_STARTED.html">准备清单 →</a>
+          <a class="tl-link lang-en" href="GET_STARTED.html">Checklist →</a>
         </div>
         <div class="tl-item">
           <div class="tl-dot">2</div>
-          <div class="tl-title">创建你的第一个项目</div>
-          <div class="tl-desc">用模板一键创建 Repo，在 README 中写下你要解决的问题和想法，然后开始动手！</div>
-          <a class="tl-link" href="CREATE_PROJECT.html">创建教程 →</a>
+          <div class="tl-title lang-zh">创建你的第一个项目</div>
+          <div class="tl-title lang-en">Create Your First Project</div>
+          <div class="tl-desc lang-zh">用模板一键创建 Repo，在 README 中写下你要解决的问题和想法，然后开始动手！</div>
+          <div class="tl-desc lang-en">Create a Repo with one click using a template, write down the problem and idea in the README, then start building!</div>
+          <a class="tl-link lang-zh" href="CREATE_PROJECT.html">创建教程 →</a>
+          <a class="tl-link lang-en" href="CREATE_PROJECT.html">Creation Tutorial →</a>
         </div>
         <div class="tl-item">
           <div class="tl-dot">3</div>
-          <div class="tl-title">了解项目生命周期</div>
-          <div class="tl-desc">从 Idea 到 Graduation，了解你的项目可以走多远，以及每个阶段该关注什么。</div>
-          <a class="tl-link" href="LIFECYCLE.html">生命周期 →</a>
+          <div class="tl-title lang-zh">了解项目生命周期</div>
+          <div class="tl-title lang-en">Understand the Project Lifecycle</div>
+          <div class="tl-desc lang-zh">从 Idea 到 Graduation，了解你的项目可以走多远，以及每个阶段该关注什么。</div>
+          <div class="tl-desc lang-en">From Idea to Graduation, learn how far your project can go and what to focus on at each stage.</div>
+          <a class="tl-link lang-zh" href="LIFECYCLE.html">生命周期 →</a>
+          <a class="tl-link lang-en" href="LIFECYCLE.html">Lifecycle →</a>
         </div>
       </div>
     </section>
@@ -254,29 +283,39 @@ layout: null
     <section class="sec fi">
       <div class="sec-head">
         <span class="sec-icon">👤</span>
-        <span class="sec-title">你想做什么？</span>
-        <span class="sec-sub">选择最匹配的入口</span>
+        <span class="sec-title lang-zh">你想做什么？</span>
+        <span class="sec-title lang-en">What do you want to do?</span>
+        <span class="sec-sub lang-zh">选择最匹配的入口</span>
+        <span class="sec-sub lang-en">Choose the best entry point</span>
       </div>
       <div class="roles">
         <a class="role" href="GET_STARTED.html">
           <div class="role-ico">🌱</div>
-          <div class="role-name">第一次参与</div>
-          <div class="role-hint">准备清单 →</div>
+          <div class="role-name lang-zh">第一次参与</div>
+          <div class="role-name lang-en">First Time</div>
+          <div class="role-hint lang-zh">准备清单 →</div>
+          <div class="role-hint lang-en">Checklist →</div>
         </a>
         <a class="role" href="CREATE_PROJECT.html">
           <div class="role-ico">💡</div>
-          <div class="role-name">创建新项目</div>
-          <div class="role-hint">创建教程 →</div>
+          <div class="role-name lang-zh">创建新项目</div>
+          <div class="role-name lang-en">Create New Project</div>
+          <div class="role-hint lang-zh">创建教程 →</div>
+          <div class="role-hint lang-en">Creation Tutorial →</div>
         </a>
         <a class="role" href="TEMPLATE_GUIDE.html">
           <div class="role-ico">📦</div>
-          <div class="role-name">了解模板结构</div>
-          <div class="role-hint">模板参考 →</div>
+          <div class="role-name lang-zh">了解模板结构</div>
+          <div class="role-name lang-en">Explore Templates</div>
+          <div class="role-hint lang-zh">模板参考 →</div>
+          <div class="role-hint lang-en">Template Reference →</div>
         </a>
         <a class="role" href="GOVERNANCE.html">
           <div class="role-ico">🧭</div>
-          <div class="role-name">管理者 / 负责人</div>
-          <div class="role-hint">治理规则 →</div>
+          <div class="role-name lang-zh">管理者 / 负责人</div>
+          <div class="role-name lang-en">Managers / Leaders</div>
+          <div class="role-hint lang-zh">治理规则 →</div>
+          <div class="role-hint lang-en">Governance →</div>
         </a>
       </div>
     </section>
@@ -285,44 +324,63 @@ layout: null
     <section class="sec fi" id="guides">
       <div class="sec-head">
         <span class="sec-icon">📚</span>
-        <span class="sec-title">全部指南</span>
+        <span class="sec-title lang-zh">全部指南</span>
+        <span class="sec-title lang-en">All Guides</span>
       </div>
       <div class="cards">
         <a class="card" href="GET_STARTED.html">
           <div class="card-ico">🎯</div>
-          <div class="card-name">新手入门</div>
-          <div class="card-info">第一次接触创新？完成准备清单，确保你具备参与条件。</div>
-          <span class="card-tag t-new">推荐起点</span>
+          <div class="card-name lang-zh">新手入门</div>
+          <div class="card-name lang-en">Getting Started</div>
+          <div class="card-info lang-zh">第一次接触创新？完成准备清单，确保你具备参与条件。</div>
+          <div class="card-info lang-en">New to innovation? Complete the checklist to ensure you are ready to participate.</div>
+          <span class="card-tag t-new lang-zh">推荐起点</span>
+          <span class="card-tag t-new lang-en">Recommended</span>
         </a>
         <a class="card" href="CREATE_PROJECT.html">
           <div class="card-ico">🛠️</div>
-          <div class="card-name">创建项目</div>
-          <div class="card-info">从创建 Repo 到开始动手的完整教程，含真实案例。</div>
-          <span class="card-tag t-new">推荐起点</span>
+          <div class="card-name lang-zh">创建项目</div>
+          <div class="card-name lang-en">Create Project</div>
+          <div class="card-info lang-zh">从创建 Repo 到开始动手的完整教程，含真实案例。</div>
+          <div class="card-info lang-en">Complete tutorial from creating a Repo to getting started, with real examples.</div>
+          <span class="card-tag t-new lang-zh">推荐起点</span>
+          <span class="card-tag t-new lang-en">Recommended</span>
         </a>
         <a class="card" href="TEMPLATE_GUIDE.html">
           <div class="card-ico">📋</div>
-          <div class="card-name">模板参考</div>
-          <div class="card-info">模板包含什么？每个文件的作用？如何自定义扩展？</div>
-          <span class="card-tag t-adv">参考</span>
+          <div class="card-name lang-zh">模板参考</div>
+          <div class="card-name lang-en">Template Reference</div>
+          <div class="card-info lang-zh">模板包含什么？每个文件的作用？如何自定义扩展？</div>
+          <div class="card-info lang-en">What does the template include? What does each file do? How to customize and extend?</div>
+          <span class="card-tag t-adv lang-zh">参考</span>
+          <span class="card-tag t-adv lang-en">Reference</span>
         </a>
         <a class="card" href="LIFECYCLE.html">
           <div class="card-ico">🔄</div>
-          <div class="card-name">项目生命周期</div>
-          <div class="card-info">Idea → Prototype → Active → Graduation 完整流程。</div>
-          <span class="card-tag t-guide">操作指南</span>
+          <div class="card-name lang-zh">项目生命周期</div>
+          <div class="card-name lang-en">Project Lifecycle</div>
+          <div class="card-info lang-zh">Idea → Prototype → Active → Graduation 完整流程。</div>
+          <div class="card-info lang-en">Idea → Prototype → Active → Graduation complete workflow.</div>
+          <span class="card-tag t-guide lang-zh">操作指南</span>
+          <span class="card-tag t-guide lang-en">Guide</span>
         </a>
         <a class="card" href="FAQ.html">
           <div class="card-ico">❓</div>
-          <div class="card-name">常见问题</div>
-          <div class="card-info">使用过程中的疑问？这里有答案。</div>
-          <span class="card-tag t-adv">参考</span>
+          <div class="card-name lang-zh">常见问题</div>
+          <div class="card-name lang-en">FAQ</div>
+          <div class="card-info lang-zh">使用过程中的疑问？这里有答案。</div>
+          <div class="card-info lang-en">Questions during use? Find answers here.</div>
+          <span class="card-tag t-adv lang-zh">参考</span>
+          <span class="card-tag t-adv lang-en">Reference</span>
         </a>
         <a class="card" href="GOVERNANCE.html">
           <div class="card-ico">🏛️</div>
-          <div class="card-name">治理与规则</div>
-          <div class="card-info">规则、责任和边界——给管理者和组织负责人。</div>
-          <span class="card-tag t-adv">参考</span>
+          <div class="card-name lang-zh">治理与规则</div>
+          <div class="card-name lang-en">Governance</div>
+          <div class="card-info lang-zh">规则、责任和边界——给管理者和组织负责人。</div>
+          <div class="card-info lang-en">Rules, responsibilities, and boundaries—for managers and organization leaders.</div>
+          <span class="card-tag t-adv lang-zh">参考</span>
+          <span class="card-tag t-adv lang-en">Reference</span>
         </a>
       </div>
     </section>
@@ -331,22 +389,29 @@ layout: null
     <section class="sec fi" id="lifecycle">
       <div class="sec-head">
         <span class="sec-icon">🔄</span>
-        <span class="sec-title">项目生命周期</span>
+        <span class="sec-title lang-zh">项目生命周期</span>
+        <span class="sec-title lang-en">Project Lifecycle</span>
       </div>
       <div class="lc-pipe">
-        <div class="lc-node"><div class="lc-circle" style="background:#fff4ce">💡</div><div class="lc-name">Idea</div><div class="lc-sub">记录想法</div></div>
+        <div class="lc-node"><div class="lc-circle" style="background:#fff4ce">💡</div><div class="lc-name">Idea</div><div class="lc-sub lang-zh">记录想法</div><div class="lc-sub lang-en">Record Ideas</div></div>
         <div class="lc-arrow">→</div>
-        <div class="lc-node"><div class="lc-circle" style="background:var(--c-primary-light)">🧪</div><div class="lc-name">Prototype</div><div class="lc-sub">快速验证</div></div>
+        <div class="lc-node"><div class="lc-circle" style="background:var(--c-primary-light)">🧪</div><div class="lc-name">Prototype</div><div class="lc-sub lang-zh">快速验证</div><div class="lc-sub lang-en">Quick Validation</div></div>
         <div class="lc-arrow">→</div>
-        <div class="lc-node"><div class="lc-circle" style="background:var(--c-success-bg)">🚀</div><div class="lc-name">Active</div><div class="lc-sub">持续迭代</div></div>
+        <div class="lc-node"><div class="lc-circle" style="background:var(--c-success-bg)">🚀</div><div class="lc-name">Active</div><div class="lc-sub lang-zh">持续迭代</div><div class="lc-sub lang-en">Continuous Iteration</div></div>
         <div class="lc-arrow">→</div>
-        <div class="lc-node"><div class="lc-circle" style="background:var(--c-purple-bg)">🎓</div><div class="lc-name">Graduation</div><div class="lc-sub">进入产品</div></div>
+        <div class="lc-node"><div class="lc-circle" style="background:var(--c-purple-bg)">🎓</div><div class="lc-name">Graduation</div><div class="lc-sub lang-zh">进入产品</div><div class="lc-sub lang-en">Enter Production</div></div>
       </div>
-      <div class="lc-detail">
+      <div class="lc-detail lang-zh">
         <p>💡 <strong>Idea</strong> — 用一句话写下你想解决的问题，创建 Repo 并标记 <code>idea</code>。</p>
         <p>🧪 <strong>Prototype</strong> — 快速构建 PoC / Demo，用最小成本验证可行性。</p>
         <p>🚀 <strong>Active</strong> — 有稳定使用场景和小范围用户，持续收集反馈。</p>
         <p>🎓 <strong>Graduation</strong> — 项目成熟、业务价值明确，迁入正式产品线。<a href="LIFECYCLE.html" style="margin-left:8px;font-weight:600;">详细了解 →</a></p>
+      </div>
+      <div class="lc-detail lang-en">
+        <p>💡 <strong>Idea</strong> — Write down the problem you want to solve in one sentence, create a Repo and tag it <code>idea</code>.</p>
+        <p>🧪 <strong>Prototype</strong> — Quickly build a PoC / Demo to validate feasibility at minimal cost.</p>
+        <p>🚀 <strong>Active</strong> — Stable use cases with a small user base, continuously collecting feedback.</p>
+        <p>🎓 <strong>Graduation</strong> — Project is mature with clear business value, migrated to production.<a href="LIFECYCLE.html" style="margin-left:8px;font-weight:600;">Learn More →</a></p>
       </div>
     </section>
 
@@ -354,33 +419,35 @@ layout: null
     <section class="sec fi" id="faq">
       <div class="sec-head">
         <span class="sec-icon">❓</span>
-        <span class="sec-title">常见问题</span>
+        <span class="sec-title lang-zh">常见问题</span>
+        <span class="sec-title lang-en">FAQ</span>
       </div>
       <div class="acc">
         <div class="acc-item">
-          <button class="acc-btn" onclick="toggleAcc(this)"><span>我完全不会 GitHub，可以参与吗？</span><span class="acc-chevron">▼</span></button>
-          <div class="acc-body"><div class="acc-inner"><strong>✅ 当然可以。</strong>你不需要会写代码。本 Playbook 的设计目标就是让你在"使用中学会"——只需跟着步骤点击即可。</div></div>
+          <button class="acc-btn" onclick="toggleAcc(this)"><span class="lang-zh">我完全不会 GitHub，可以参与吗？</span><span class="lang-en">I don't know GitHub at all, can I participate?</span><span class="acc-chevron">▼</span></button>
+          <div class="acc-body"><div class="acc-inner lang-zh"><strong>✅ 当然可以。</strong>你不需要会写代码。本 Playbook 的设计目标就是让你在“使用中学会”——只需跟着步骤点击即可。</div><div class="acc-inner lang-en"><strong>✅ Of course you can.</strong> You don't need to know how to code. This Playbook is designed to help you "learn by doing"—just follow the steps and click.</div></div>
         </div>
         <div class="acc-item">
-          <button class="acc-btn" onclick="toggleAcc(this)"><span>想法还不成熟，可以创建项目吗？</span><span class="acc-chevron">▼</span></button>
-          <div class="acc-body"><div class="acc-inner"><strong>✅ 非常鼓励。</strong>创新的正确顺序是：想法 → 尝试 → 学习 → 再调整。一句话想法就足以开始。</div></div>
+          <button class="acc-btn" onclick="toggleAcc(this)"><span class="lang-zh">想法还不成熟，可以创建项目吗？</span><span class="lang-en">My idea isn't fully formed yet, can I create a project?</span><span class="acc-chevron">▼</span></button>
+          <div class="acc-body"><div class="acc-inner lang-zh"><strong>✅ 非常鼓励。</strong>创新的正确顺序是：想法 → 尝试 → 学习 → 再调整。一句话想法就足以开始。</div><div class="acc-inner lang-en"><strong>✅ Absolutely encouraged.</strong> The right order for innovation is: Idea → Try → Learn → Adjust. A one-sentence idea is enough to get started.</div></div>
         </div>
         <div class="acc-item">
-          <button class="acc-btn" onclick="toggleAcc(this)"><span>模板会限制我的创意吗？</span><span class="acc-chevron">▼</span></button>
-          <div class="acc-body"><div class="acc-inner"><strong>❌ 不会。</strong>模板是起点不是终点。你可以自由删改内容、调整结构。它只是帮你少踩坑。</div></div>
+          <button class="acc-btn" onclick="toggleAcc(this)"><span class="lang-zh">模板会限制我的创意吗？</span><span class="lang-en">Will the template limit my creativity?</span><span class="acc-chevron">▼</span></button>
+          <div class="acc-body"><div class="acc-inner lang-zh"><strong>❌ 不会。</strong>模板是起点不是终点。你可以自由删改内容、调整结构。它只是帮你少踩坑。</div><div class="acc-inner lang-en"><strong>❌ No.</strong> The template is a starting point, not an endpoint. You can freely modify content and adjust the structure. It just helps you avoid common pitfalls.</div></div>
         </div>
         <div class="acc-item">
-          <button class="acc-btn" onclick="toggleAcc(this)"><span>项目停滞了算失败吗？</span><span class="acc-chevron">▼</span></button>
-          <div class="acc-body"><div class="acc-inner"><strong>✅ 不算。</strong>项目可以暂停、归档或转向。每一次尝试都是学习，停滞 ≠ 失败。</div></div>
+          <button class="acc-btn" onclick="toggleAcc(this)"><span class="lang-zh">项目停滞了算失败吗？</span><span class="lang-en">Is a stalled project considered a failure?</span><span class="acc-chevron">▼</span></button>
+          <div class="acc-body"><div class="acc-inner lang-zh"><strong>✅ 不算。</strong>项目可以暂停、归档或转向。每一次尝试都是学习，停滞 ≠ 失败。</div><div class="acc-inner lang-en"><strong>✅ No.</strong> Projects can be paused, archived, or pivoted. Every attempt is a learning experience—stalled ≠ failed.</div></div>
         </div>
       </div>
-      <p style="text-align:center;margin-top:16px"><a href="FAQ.html" style="font-weight:600;font-size:.92rem">查看全部问题 →</a></p>
+      <p style="text-align:center;margin-top:16px"><a class="lang-zh" href="FAQ.html" style="font-weight:600;font-size:.92rem">查看全部问题 →</a><a class="lang-en" href="FAQ.html" style="font-weight:600;font-size:.92rem">View All Questions →</a></p>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
       <p><strong>Innovation Playbook</strong> · GCR Garage Innovation</p>
-      <p style="margin-top:6px">💡 不要等"准备好"——现在就开始</p>
+      <p class="lang-zh" style="margin-top:6px">💡 不要等“准备好”——现在就开始</p>
+      <p class="lang-en" style="margin-top:6px">💡 Don't wait to be "ready"—start now</p>
     </footer>
 
   </main>
@@ -419,6 +486,10 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 
 // Mobile sidebar close on click
 document.querySelectorAll('.side-link').forEach(l=>l.addEventListener('click',()=>document.getElementById('sidebar').classList.remove('open')));
+
+// Language toggle
+function toggleLang(){var c=document.documentElement.lang;var n=c==='en'?'zh':'en';document.documentElement.lang=n;document.getElementById('lang-zh-btn').className=n==='zh'?'active':'';document.getElementById('lang-en-btn').className=n==='en'?'active':'';localStorage.setItem('playbook-lang',n)}
+(function(){var s=localStorage.getItem('playbook-lang');if(s==='en'){document.documentElement.lang='en';var zh=document.getElementById('lang-zh-btn');var en=document.getElementById('lang-en-btn');if(zh)zh.className='';if(en)en.className='active'}})();
 </script>
 </body>
 </html>

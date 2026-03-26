@@ -1,8 +1,11 @@
 ---
 title: 创建你的第一个创新项目
+title_en: Create Your First Innovation Project
 layout: page
 nav_id: create-project
 ---
+
+<div class="lang-zh" markdown="1">
 
 # 🛠️ 创建你的第一个创新项目
 
@@ -133,3 +136,139 @@ nav_id: create-project
 - ✅ 开始了第一次尝试
 
 🎉 **欢迎来到创新旅程！**
+
+</div>
+
+<div class="lang-en" markdown="1">
+
+# 🛠️ Create Your First Innovation Project
+
+> **Who is this for:** Anyone who has completed the onboarding steps and is ready to create a project  
+> **What this page covers:** How to create and launch an innovation project from scratch  
+> **What you'll be able to do:** Create a repo, define your idea, and start building
+
+This page is a **complete tutorial for creating an innovation project**. Follow these 5 steps and you'll have a project that's truly your own.
+
+> 📌 **Prerequisites:** Make sure you've already joined the `gcr-garage-innovation` Organization and are a member of the `incubator-creators` Team.  
+> Not yet? Head over to [Getting Started](GET_STARTED.html) to complete the setup first.
+
+---
+
+## 🚀 Step 1: Create a Repo from the Template
+
+1. Go to the [Innovation GitHub Organization homepage](https://github.com/gcr-garage-innovation)
+2. Click **New repository**
+3. In the **Repository template** dropdown, select: `template-innovation-repo`
+4. Fill in the repository details:
+   - **Repository name** — Your project name (e.g., `ai-meeting-summary`)
+   - **Description** — A one-line summary of what you're building
+   - **Visibility** — Select Public
+5. Click **Create repository**
+
+✅ Congratulations! You now have your very own innovation project repo.
+
+> 💡 Not sure what's in the template? Check the [Template Reference Guide](TEMPLATE_GUIDE.html) to learn about the template structure and what each file does.
+
+---
+
+## 📝 Step 2: Fill in the README (The Most Important Step)
+
+Open the repo you just created and navigate to `README.md`. You'll see pre-filled content from the template.
+
+**Please carefully complete these three sections:**
+
+### 1️⃣ Problem
+
+Describe the problem you want to solve in 2–3 sentences:
+- Who is affected by this problem?
+- What impact does it have?
+
+**Example:**
+> *"Our team spends 2 hours per week manually compiling meeting notes, and key decisions and action items are frequently missed."*
+
+### 2️⃣ Idea
+
+How do you plan to solve it? A rough concept is fine:
+- What approach or technology will you use?
+- Why do you think it will work?
+
+**Example:**
+> *"Use AI speech-to-text plus automatic summarization to generate structured meeting notes. Start with a PoC using existing APIs."*
+
+### 3️⃣ Status
+
+Choose your current stage:
+- `idea` — Just an idea, haven't started building yet
+- `prototype` — Currently working on a demo / PoC
+- `active` — Already has real users
+
+> 💡 **Most new projects start at `idea`** — and that's perfectly fine.
+> To learn about the full stage progression, see [Project Lifecycle](LIFECYCLE.html).
+
+---
+
+## 👥 Step 3: Invite Collaborators (Optional but Recommended)
+
+Innovation is a team sport. If you have interested colleagues:
+
+1. Go to your repo → **Settings** → **Collaborators**
+2. Click **Add people**
+3. Enter your colleague's GitHub username
+
+> 💡 A small team of 2–3 people is the most effective combination for innovation.
+> Even if someone just reviews your README and gives feedback, that's valuable collaboration.
+
+---
+
+## 🧪 Step 4: Start Building (Don't Wait for Perfection)
+
+Now you're free to explore:
+
+- ✏️ **Write code** — A first script or prototype
+- 🎨 **Sketch it out** — Flowcharts, architecture diagrams, UI wireframes
+- 🤖 **Use AI to help** — GitHub Copilot / ChatGPT / Agents for rapid prototyping
+- 📝 **Document everything** — Ideas, experiments, failures, and lessons learned
+
+> **Done > Perfect.** The right sequence for innovation is: Idea → Try → Learn → Iterate.
+
+---
+
+## 📈 Step 5: Showcase and Get Feedback
+
+Once you have initial results:
+
+- Present at a team **Demo Day / Show & Tell** (3–5 minutes is enough)
+- Invite 3–5 potential users to try it out
+- Adjust your direction based on feedback
+- Update the Status in your README
+
+If your project matures over time, consider entering the [Graduation process](LIFECYCLE.html).
+
+---
+
+## 📖 Real-World Example: AI Meeting Summary Tool
+
+> **Problem:** The team spent 2 hours per week manually compiling meeting notes  
+> **Idea:** Use AI speech-to-text + GPT summarization to automatically generate meeting notes  
+> **Journey:**
+> 1. Day 1 — Created the repo, clearly documented the Problem and Idea, set status to `idea`
+> 2. Day 3 — Built a speech-to-text demo using the Whisper API
+> 3. Week 2 — Added GPT summarization, updated status to `prototype`
+> 4. Week 4 — 3 colleagues started using it, saving 1.5 hours per week, status changed to `active`
+>
+> **Key takeaway:** A working demo beats a perfect plan. Build the smallest useful feature first, then iterate.
+
+---
+
+## ✅ Completion Checklist
+
+If you've made it this far, you should have:
+
+- ✅ Created a project repo using the template
+- ✅ Clearly documented the Problem and Idea in your README
+- ✅ Set your current status
+- ✅ Made your first attempt at building
+
+🎉 **Welcome to the innovation journey!**
+
+</div>

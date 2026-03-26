@@ -1,8 +1,11 @@
 ---
 title: 常见问题 FAQ
+title_en: Frequently Asked Questions
 layout: page
 nav_id: faq
 ---
+
+<div class="lang-zh" markdown="1">
 
 # ❓ 常见问题（FAQ）
 
@@ -149,3 +152,155 @@ GitHub Pages 会自动把 `XXX.md` 转换为 `XXX.html`，你不需要手动生�
 - 写下了你的想法
 
 🎉 那你已经在创新路上了。
+
+</div>
+
+<div class="lang-en" markdown="1">
+
+# ❓ Frequently Asked Questions (FAQ)
+
+> **Who is this for:** Anyone with questions about participating in innovation  
+> **What this page covers:** Common questions from newcomers and participants  
+> **What you can do after reading:** Clear up doubts quickly and keep moving forward
+
+This page collects the **most common questions newcomers have when using the Innovation Playbook and GitHub**.
+
+If this is your first time using GitHub, don't worry — these questions are completely normal.
+
+---
+
+## 🤔 I have no GitHub experience at all. Can I still participate in innovation projects?
+
+✅ **Yes — and you are exactly the kind of person we want to support.**
+
+You don't need to:
+- Be a programmer
+- Know how to code
+- Be familiar with advanced GitHub features
+
+All you need is to:
+- Be able to read documentation
+- Be able to click buttons
+- Be willing to try out an idea
+
+---
+
+## 🤔 Do I need to learn GitHub before I can get started?
+
+❌ No.
+
+This Playbook is designed so that:
+> **You learn GitHub by using it, rather than studying it first.**
+
+Just follow these pages:
+- [Getting Started](GET_STARTED.html) → Join the organization
+- [Create a Project](CREATE_PROJECT.html) → Create a Repo
+- [Template Guide](TEMPLATE_GUIDE.html) → Use a template
+
+---
+
+## 🤔 What is a Repository (Repo)? Do I have to create one?
+
+✅ A Repository (Repo) is essentially:
+> **An online folder + instruction manual for your project**
+
+If you want to:
+- Document an innovative idea
+- Build a PoC / Demo
+- Collaborate with others
+
+👉 **Then you need a Repo**
+
+You don't have to write code right away —  
+**a Repo can be used simply to write a README and record your ideas.**
+
+---
+
+## 🤔 I only have a rough idea that isn't fully formed. Can I still create a project?
+
+✅ **Absolutely — we strongly encourage it.**
+
+The right sequence for innovation is:
+> Idea → Experiment → Learn → Adjust
+
+❌ Not:
+> Perfect plan → Then dare to start
+
+---
+
+## 🤔 Will using a project template limit my creativity?
+
+❌ Not at all.
+
+Templates are designed to:
+- Help you avoid common pitfalls
+- Give you a starting point
+- Provide a recommended structure
+
+You can:
+- Remove sections you don't need
+- Add your own content
+- Change direction at any time
+
+👉 Templates are tools, not rules.
+
+---
+
+## 🤔 I created a page (.md), but I'm not sure if it's "live"?
+
+✅ This is the most common question from newcomers.
+
+Just remember one thing:
+
+> **As soon as you click "Commit changes", your page is live.**
+
+GitHub Pages automatically converts `XXX.md` into `XXX.html` — you don't need to manually generate anything.
+
+---
+
+## 🤔 Why does the file look different from what I see on the website?
+
+This is because the two entry points display content differently:
+- **GitHub repository page** — shows the source file (in Markdown format)
+- **GitHub Pages website** — shows the rendered web page (with styling and navigation)
+
+✅ The correct way to view your content is through the **GitHub Pages website link**, not by browsing the source files directly in the repository.
+
+---
+
+## 🤔 Who should I share this Innovation Playbook with?
+
+You can:
+- Share it with colleagues interested in innovation
+- Use it as an entry point for Hackathons / Garage events
+- Use it as onboarding material for new team members
+
+👉 This is a **website you can share externally, as-is**.
+
+---
+
+## 🤔 I'm worried I might do something wrong. Could I affect other people's work?
+
+✅ Don't worry.
+
+- GitHub keeps a full history of all changes
+- You can edit at any time
+- You can roll back changes
+- Innovation inherently allows for trial and error
+
+👉 **Done > Perfect**
+
+---
+
+## ✅ If I could only remember one thing, what should it be?
+
+> **Don't wait until you're "ready" — start now.**
+
+If you have already:
+- Finished the Getting Started guide
+- Created your first Repo
+- Written down your idea
+
+🎉 Then you're already on the path to innovation.
+
+</div>

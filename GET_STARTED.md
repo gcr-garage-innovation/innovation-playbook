@@ -1,8 +1,11 @@
 ---
 title: 新手入门 — 准备工作
+title_en: Getting Started — Prerequisites
 layout: page
 nav_id: get-started
 ---
+
+<div class="lang-zh" markdown="1">
 
 # 🎯 新手入门：准备工作
 
@@ -70,3 +73,76 @@ Innovation Playbook 是一个**员工创新指南网站**，帮助你：
 - ✅ 在 `incubator-creators` Team 中
 
 那么你已经准备好了，现在可以去 **[创建你的第一个创新项目 →](CREATE_PROJECT.html)**
+
+</div>
+
+<div class="lang-en" markdown="1">
+
+# 🎯 Getting Started: Prerequisites
+
+> **Who is this for:** Employees new to innovation projects  
+> **What this page covers:** Confirming you have everything you need to participate  
+> **What you'll be able to do after reading:** Complete the setup and jump straight into creating a project
+
+This page has one goal: **make sure you're ready to go**.
+Once you are, head over to [Create Your First Project](CREATE_PROJECT.html).
+
+---
+
+## 📌 What Is the Innovation Playbook?
+
+The Innovation Playbook is an **employee innovation guide** designed to help you:
+
+- Explore and experiment with new ideas in a safe space
+- Use GitHub to document, collaborate on, and showcase your innovation projects
+- Take an idea from Idea → Prototype → and even Graduation into a production product
+
+> 💡 **You don't need to be a developer.** This guide is designed so you can learn by doing — no upfront training required.
+
+---
+
+## ✅ Preparation Checklist
+
+Before creating a project, complete these 3 steps:
+
+### 1️⃣ Create a GitHub Account
+
+If you don't have a GitHub account yet:
+
+1. Go to [github.com](https://github.com)
+2. Click **Sign up** and follow the prompts
+3. We recommend using your corporate email address
+
+> Already have an account? Skip to the next step.
+
+---
+
+### 2️⃣ Join the Innovation GitHub Organization
+
+1. **Contact your manager or innovation lead** and share your GitHub username
+2. An admin will add you to the `gcr-garage-innovation` Organization
+3. You'll receive an invitation email — click **Accept** to join
+
+To verify: open the [Organization homepage](https://github.com/gcr-garage-innovation). If you can see the org page, you're in.
+
+---
+
+### 3️⃣ Confirm You're on the Right Team
+
+After joining the Organization, make sure you're a member of the **`incubator-creators`** Team — this team grants you permission to create project repos.
+
+> 💡 Not sure whether you're on this team? Reach out to your admin to confirm.
+
+---
+
+## 🎉 You're All Set!
+
+If you have:
+
+- ✅ A GitHub account
+- ✅ Joined the `gcr-garage-innovation` Organization
+- ✅ Been added to the `incubator-creators` Team
+
+Then you're ready to go — **[Create Your First Innovation Project →](CREATE_PROJECT.html)**
+
+</div>

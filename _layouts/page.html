@@ -55,6 +55,23 @@
     /* ── Layout ── */
     .page { max-width: 780px; margin: 0 auto; padding: calc(var(--header-h) + 36px) 24px 60px; }
 
+    /* ── Language Toggle ── */
+    .lang-toggle {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+      border-radius: 20px; padding: 3px 4px; cursor: pointer; font-size: .78rem;
+    }
+    .lang-toggle span {
+      padding: 3px 10px; border-radius: 16px; color: rgba(255,255,255,.7);
+      transition: all .2s;
+    }
+    .lang-toggle span.active { background: #fff; color: var(--c-primary-dark); font-weight: 700; }
+
+    /* ── Bilingual content ── */
+    .lang-en { display: none; }
+    html[lang="en"] .lang-zh { display: none; }
+    html[lang="en"] .lang-en { display: block; }
+
     /* ── Breadcrumb ── */
     .breadcrumb { font-size: .82rem; color: var(--c-sub); margin-bottom: 24px; }
     .breadcrumb a { color: var(--c-primary); }
@@ -130,7 +147,12 @@
     <a href="index.html">🚀 <span>Innovation Playbook</span></a>
   </div>
   <button class="mobile-toggle" onclick="document.querySelector('.header-nav').classList.toggle('open')">☰</button>
-  <nav class="header-nav">
+  <div style="display:flex;align-items:center;gap:12px">
+    <div class="lang-toggle" onclick="toggleLang()">
+      <span id="lang-zh-btn" class="active">中文</span>
+      <span id="lang-en-btn">EN</span>
+    </div>
+    <nav class="header-nav">
     <a href="GET_STARTED.html" {% if page.nav_id == 'get-started' %}class="active"{% endif %}>🎯 新手入门</a>
     <a href="CREATE_PROJECT.html" {% if page.nav_id == 'create-project' %}class="active"{% endif %}>🛠️ 创建项目</a>
     <a href="TEMPLATE_GUIDE.html" {% if page.nav_id == 'template-guide' %}class="active"{% endif %}>📋 模板指南</a>
@@ -138,12 +160,16 @@
     <a href="FAQ.html" {% if page.nav_id == 'faq' %}class="active"{% endif %}>❓ FAQ</a>
     <a href="GOVERNANCE.html" {% if page.nav_id == 'governance' %}class="active"{% endif %}>📜 治理</a>
   </nav>
+  </div>
 </header>
 
 <div class="page">
 
-  <div class="breadcrumb">
+  <div class="breadcrumb lang-zh">
     <a href="index.html">🏠 首页</a> / <strong>{{ page.title }}</strong>
+  </div>
+  <div class="breadcrumb lang-en">
+    <a href="index.html">🏠 Home</a> / <strong>{{ page.title_en | default: page.title }}</strong>
   </div>
 
   <div class="content">
@@ -152,7 +178,8 @@
 
   <!-- Unified Bottom Navigation -->
   <div class="bottom-nav">
-    <div class="bottom-nav-title">📚 浏览其他页面</div>
+    <div class="bottom-nav-title lang-zh">📚 浏览其他页面</div>
+    <div class="bottom-nav-title lang-en">📚 Browse Other Pages</div>
     <div class="nav-grid">
       <a class="nav-card home" href="index.html">
         <span class="nav-icon">🏠</span><span class="nav-label">返回首页</span>
@@ -195,6 +222,27 @@
 <div class="footer">
   <p>GCR Garage Innovation · <a href="https://github.com/gcr-garage-innovation" target="_blank">GitHub Organization</a> · <a href="index.html">Innovation Playbook</a></p>
 </div>
+
+<script>
+function toggleLang() {
+  var cur = document.documentElement.lang;
+  var next = cur === 'en' ? 'zh' : 'en';
+  document.documentElement.lang = next;
+  document.getElementById('lang-zh-btn').className = next === 'zh' ? 'active' : '';
+  document.getElementById('lang-en-btn').className = next === 'en' ? 'active' : '';
+  localStorage.setItem('playbook-lang', next);
+}
+(function() {
+  var saved = localStorage.getItem('playbook-lang');
+  if (saved === 'en') {
+    document.documentElement.lang = 'en';
+    var zh = document.getElementById('lang-zh-btn');
+    var en = document.getElementById('lang-en-btn');
+    if (zh) zh.className = '';
+    if (en) en.className = 'active';
+  }
+})();
+</script>
 
 </body>
 </html>
