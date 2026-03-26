@@ -1,70 +1,82 @@
-# innovation-playbook
-How to use this GitHub organization for employee innovation
-# 🚀 Innovation GitHub Organization
+## 🗺️ Innovation Playbook 内容结构一览
 
-欢迎来到公司的创新 GitHub 组织。
+本仓库（Innovation Playbook）用于帮助员工 **从 0 开始参与创新项目**，  
+并为创新项目提供 **统一的指导、模板、生命周期说明以及治理规则**。
 
-这里是：
-- ✅ 员工自由探索想法的地方
-- ✅ Hackathon / PoC / Agent / 原型的家
-- ✅ 从 0 → 1 的创新起点
+无论你是否有 GitHub 或技术背景，都可以按照本 Playbook 逐步参与。
 
 ---
 
-## 👩‍💻 我可以在这里做什么？
+### 📘 快速开始（新手入口）
 
-你可以：
-- 创建一个新的创新项目 Repo
-- 邀请同事一起协作
-- 使用 GitHub + Copilot 快速验证想法
-- 在失败中学习，在成功中成长
+如果你是第一次接触创新项目，建议从这里开始：
 
-不需要审批，不需要完美计划。
+- **GET_STARTED.md**  
+  新手入口页面，介绍如何第一次参与创新、如何开始尝试
 
 ---
 
-## 🧭 项目最终会走向哪里？
+### 📚 使用指南（如何动手）
 
-- 大多数项目会在这里探索、学习、结束
-- **成熟项目可以“毕业”到正式产品组织**
-- 本组织不会承载长期生产系统
+用于指导你 **真正开始做事情**：
 
----
+- **CREATE_PROJECT.md**  
+  一步一步指导如何创建你的第一个创新项目 Repository
 
-## 📦 如何开始？
-
-1. 加入 `incubator-creators` 团队
-2. 使用创新项目模板创建 Repo
-3. 写清楚你的想法，然后开始尝试
+- **TEMPLATE_GUIDE.md**  
+  说明什么是项目模板、什么时候该用模板、以及如何正确使用模板启动项目
 
 ---
 
-> 💡 这里不是代码仓库  
-> 这里是 **创新发生的地方**
+### 🔄 项目生命周期（从想法到落地）
+
+用于理解创新项目的整体路径：
+
+- **LIFECYCLE.md**  
+  介绍项目如何从  
+  *Idea → Prototype → Active → Graduation（毕业）*
 
 ---
 
-Innovation Playbook（网站首页）
-│
-├── 📘 快速开始
-│   └── GET_STARTED.html
-│       └─ 新手入口：第一次如何参与创新
-│
-├── 📚 使用指南
-│   ├── CREATE_PROJECT.html
-│   │   └─ 如何创建第一个创新项目 Repo
-│   │
-│   └── TEMPLATE_GUIDE.html
-│       └─ 如何使用项目模板快速启动
-│
-├── 🔄 项目生命周期
-│   └── LIFECYCLE.html
-│       └─ 项目从 Idea → Prototype → Graduation
-│
-├── ❓ 常见问题
-│   └── FAQ.html
-│       └─ 新手 & 普通参与者常见问题
-│
-└── 🏛️ 治理与规则
-    └── GOVERNANCE.html
-        └─ 规则、责任、管理者 FAQ
+### ❓ 常见问题（新手 FAQ）
+
+如果你在过程中有疑问，大多数问题可以在这里找到答案：
+
+- **FAQ.md**  
+  面向新手和普通参与者的常见问题说明  
+  （例如：不会 GitHub 是否可以参与、项目不成熟怎么办等）
+
+---
+
+### 🏛️ 治理与规则（给管理者 / 组织使用）
+
+用于明确 **规则、责任和边界**，确保创新可持续：
+
+- **GOVERNANCE.md**  
+  说明创新项目的治理原则、角色责任，以及管理者常见问题（FAQ for Managers）
+
+---
+
+## 👀 我应该从哪里开始阅读？
+
+- **第一次接触创新项目？**  
+  👉 从 `GET_STARTED.md` 开始
+
+- **已经有想法，想创建项目？**  
+  👉 查看 `CREATE_PROJECT.md`
+
+- **不确定模板怎么用？**  
+  👉 查看 `TEMPLATE_GUIDE.md`
+
+- **想了解项目如何“毕业”？**  
+  👉 查看 `LIFECYCLE.md`
+
+- **你是管理者 / 组织负责人？**  
+  👉 查看 `GOVERNANCE.md`
+
+---
+
+## 🌐 网站形式访问（可选）
+
+本 Playbook 同时以 **GitHub Pages 网站** 的形式提供，  
+适合直接分享给同事或新成员阅读：
