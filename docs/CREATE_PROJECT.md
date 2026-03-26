@@ -97,7 +97,7 @@ title: 创建你的第一个创新项目
 
 如果项目成熟，可以进入 **Graduation（毕业）流程**。
 
-👉 参见：LIFECYCLE.html
+👉 参见：[项目生命周期](LIFECYCLE.html)
 
 ---
 
@@ -116,11 +116,11 @@ title: 创建你的第一个创新项目
 
 现在你已经创建了一个创新项目，接下来可以：
 
-- 👉 TEMPLATE_GUIDE.html  
+- 👉 [模板指南](TEMPLATE_GUIDE.html)  
   学习如何正确使用项目模板，完善你的项目结构
 
-- 👉 LIFECYCLE.html  
+- 👉 [项目生命周期](LIFECYCLE.html)  
   了解你的项目接下来可能经历的阶段和路径
 
-- 👉 FAQ.html  
+- 👉 [常见问题](FAQ.html)  
   查看创建项目过程中常见的问题和解答
