@@ -17,6 +17,9 @@ title: Innovation Playbook
 ---
 
 ## 📚 使用指南
+- 👉 CREATE_PROJECT.html
+  创建你的第一个创新项目
+  
 > 日常使用 GitHub / 模板 / 项目管理
 
 - 👉 README.html  
