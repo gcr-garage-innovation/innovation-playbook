@@ -24,11 +24,6 @@ title: Innovation Playbook
 > 日常使用 GitHub / 模板 / 项目管理
 - 👉 README.html  
   了解这个创新 GitHub 组织是做什么的
-
-## ❓ 常见问题
-
-- 👉 FAQ.html  
-  新手使用 GitHub 和创新项目的常见问题
 ---
 
 ## 🔄 项目生命周期
@@ -36,6 +31,12 @@ title: Innovation Playbook
 
 - 👉 LIFECYCLE.html  
   项目从 Idea → Prototype → Graduation 的完整流程
+---
+
+## ❓ 常见问题
+
+- 👉 FAQ.html  
+  新手使用 GitHub 和创新项目的常见问题
 
 ## 🏛️ 治理与规则
 
